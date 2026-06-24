@@ -1,0 +1,165 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-Account Cloud Governance | Rodney Edwin-King</title>
+    <meta name="description" content="Documentation-style cloud governance case study covering AWS multi-account governance, IAM, SCPs, logging, monitoring, and security visibility.">
+    <link rel="stylesheet" href="../styles.css">
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">Rodney Edwin-King</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#credentials">Credentials</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="blog-page">
+      <article class="blog-post">
+        <p class="eyebrow">Project Documentation</p>
+
+        <h1>Multi-Account Cloud Governance</h1>
+
+        <p class="blog-lead">
+          This case study documents how I supported and improved AWS multi-account governance across an enterprise cloud environment.
+          The focus was account structure, IAM controls, SCP guardrails, logging, monitoring, security visibility, and repeatable
+          operating patterns that helped teams use AWS in a more controlled and consistent way.
+        </p>
+
+        <p class="blog-meta">
+          Services and tools: AWS Organizations, Control Tower patterns, IAM, SCPs, CloudTrail, AWS Config, Security Hub,
+          CloudWatch, CloudFormation StackSets, AWS CLI, and Azure DevOps.
+        </p>
+
+        <hr>
+
+        <h2>Overview</h2>
+
+        <p>
+          As AWS usage grows, governance becomes more important than simply creating accounts and giving teams access.
+          Each account needs to follow a consistent operating model for security, logging, monitoring, access control,
+          ownership, and compliance review.
+        </p>
+
+        <p>
+          In this environment, the work involved supporting governance across more than 30 AWS accounts. These accounts
+          included application workloads, development and test environments, production environments, shared services,
+          security visibility, and operational support boundaries.
+        </p>
+
+        <h2>Problem</h2>
+
+        <p>
+          The main challenge was consistency. When accounts are created or managed manually, small differences can appear
+          over time. Those differences can affect IAM permissions, logging coverage, monitoring, security reporting,
+          cost visibility, and ownership tracking.
+        </p>
+
+        <p>
+          The business needed a more repeatable governance model so cloud operations could identify risk, support
+          application teams, and maintain a standard baseline across different AWS accounts.
+        </p>
+
+        <h2>Architecture</h2>
+
+        <p>
+          The governance model used AWS Organizations as the central structure. Accounts were separated by purpose so
+          that production workloads, development workloads, shared services, security visibility, and operational tooling
+          could be managed with clearer boundaries.
+        </p>
+
+        <figure class="blog-diagram architecture-image">
+          <img src="../assets/diagrams/multi-account-governance.svg" alt="AWS multi-account governance architecture diagram">
+          <figcaption>AWS multi-account governance architecture showing account structure, security visibility, shared services, workload accounts, baseline automation, and review workflows.</figcaption>
+        </figure>
+
+        <h2>What I Did</h2>
+
+        <p>
+          My work focused on maintaining and improving the governance layer around the AWS account structure.
+          This included reviewing account-level configuration, supporting IAM patterns, working with security tooling,
+          helping with operational reporting, and supporting automation used to standardize cloud controls.
+        </p>
+
+        <p>
+          I worked with IAM roles, permissions, service-linked roles, SCP-related governance, CloudTrail, AWS Config,
+          Security Hub, CloudWatch, CloudFormation, StackSets, and AWS CLI workflows. The goal was to make the environment
+          easier to operate, easier to review, and less dependent on one-off manual configuration.
+        </p>
+
+        <h2>Implementation Approach</h2>
+
+        <h3>1. Reviewed the account structure</h3>
+        <p>
+          I started by understanding how accounts were grouped and used. This included identifying production accounts,
+          non-production accounts, shared service accounts, security-related accounts, and accounts used for application
+          or platform operations.
+        </p>
+
+        <h3>2. Reviewed access and governance controls</h3>
+        <p>
+          I reviewed how access was managed across accounts, including IAM roles, permission boundaries, service-linked roles,
+          and organization-level guardrail patterns. The goal was to understand where permissions were standardized and where
+          additional review or cleanup was needed.
+        </p>
+
+        <h3>3. Supported baseline standardization</h3>
+        <p>
+          I supported repeatable baseline patterns using CloudFormation and StackSets. This helped reduce manual drift and
+          made it easier to apply common configuration across multiple AWS accounts.
+        </p>
+
+        <h3>4. Improved security and operational visibility</h3>
+        <p>
+          I used security and monitoring services such as Security Hub, AWS Config, CloudTrail, and CloudWatch to support
+          visibility into account posture, findings, logging, and operational health.
+        </p>
+
+        <h3>5. Supported review and remediation workflows</h3>
+        <p>
+          I helped surface findings, ownership gaps, stale resources, cost concerns, and remediation items during cloud
+          operations and governance reviews.
+        </p>
+
+        <h2>Security and Governance Considerations</h2>
+
+        <p>
+          Account separation helped reduce blast radius between environments. IAM and SCP guardrails helped control what
+          actions could be performed. Centralized logging and security tooling helped provide visibility across accounts.
+          These controls were important because governance has to work across many teams and workloads without slowing
+          delivery down unnecessarily.
+        </p>
+
+        <h2>Outcome</h2>
+
+        <p>
+          The work improved consistency across more than 30 AWS accounts and supported a stronger operating model for
+          cloud governance. It also improved visibility into security posture, access patterns, logging coverage,
+          monitoring, and remediation follow-up.
+        </p>
+
+        <p>
+          The result was a more controlled cloud environment with better structure around governance, security reviews,
+          operational support, and account-level standardization.
+        </p>
+
+        <p class="blog-back-link">
+          <a href="../index.html#projects">← Back to Projects</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Rodney Edwin-King. Cloud Platform Engineering, Governance, Security, and Application Operations.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
+

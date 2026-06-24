@@ -1,0 +1,60 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#071016"/>
+      <stop offset="100%" stop-color="#0e1b24"/>
+    </linearGradient>
+    <style>
+      .bg { fill: url(#bg); }
+      .title { fill: #f5f7fb; font-family: Arial, sans-serif; font-size: 30px; font-weight: 800; }
+      .subtitle { fill: #a9b6c3; font-family: Arial, sans-serif; font-size: 16px; }
+      .box { fill: #102231; stroke: #48d5ff; stroke-opacity: .55; stroke-width: 1.5; rx: 16; }
+      .box2 { fill: #101c26; stroke: #7c5cff; stroke-opacity: .6; stroke-width: 1.4; rx: 14; }
+      .box3 { fill: #101c26; stroke: #ffb454; stroke-opacity: .65; stroke-width: 1.4; rx: 14; }
+      .label { fill: #f5f7fb; font-family: Arial, sans-serif; font-size: 18px; font-weight: 800; }
+      .small { fill: #a9b6c3; font-family: Arial, sans-serif; font-size: 14px; }
+      .line { stroke: #48d5ff; stroke-opacity: .45; stroke-width: 2.2; fill: none; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="720" rx="24"/>
+  <text class="title" x="60" y="58">Cloud Cost & Operations Reviews Architecture</text>
+  <text class="subtitle" x="60" y="86">Portfolio architecture diagram showing workflow, automation, monitoring, and operational outcome.</text>
+
+  <rect class="box" x="410" y="125" width="380" height="80" rx="16"/>
+  <text class="label" x="498" y="158">Project Entry Point</text>
+  <text class="small" x="475" y="182">Request, event, review, or operational need</text>
+
+  <path class="line" d="M600 205 V250"/>
+  <path class="line" d="M190 250 H1010"/>
+  <path class="line" d="M190 250 V295"/>
+  <path class="line" d="M460 250 V295"/>
+  <path class="line" d="M740 250 V295"/>
+  <path class="line" d="M1010 250 V295"/>
+
+  <rect class="box2" x="70" y="295" width="240" height="110" rx="14"/>
+  <text class="label" x="125" y="335">Billing</text>
+  <text class="small" x="105" y="365">Primary service layer</text>
+
+  <rect class="box2" x="340" y="295" width="240" height="110" rx="14"/>
+  <text class="label" x="395" y="335">Tags</text>
+  <text class="small" x="375" y="365">Automation and control</text>
+
+  <rect class="box2" x="620" y="295" width="240" height="110" rx="14"/>
+  <text class="label" x="675" y="335">Reports</text>
+  <text class="small" x="655" y="365">Visibility and validation</text>
+
+  <rect class="box2" x="890" y="295" width="240" height="110" rx="14"/>
+  <text class="label" x="945" y="335">Reviews</text>
+  <text class="small" x="925" y="365">Operational outcome</text>
+
+  <path class="line" d="M600 425 V465"/>
+  <rect class="box3" x="220" y="465" width="760" height="85" rx="14"/>
+  <text class="label" x="455" y="500">Standardized Implementation Flow</text>
+  <text class="small" x="330" y="528">Plan • Build • Automate • Monitor • Review • Improve</text>
+
+  <path class="line" d="M600 550 V590"/>
+  <rect class="box" x="300" y="590" width="600" height="80" rx="16"/>
+  <text class="label" x="445" y="625">Documented Engineering Outcome</text>
+  <text class="small" x="395" y="650">Reliable, repeatable, secure, and easier to operate</text>
+</svg>
