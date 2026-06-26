@@ -1833,3 +1833,445 @@ h3 {
   max-width: 100% !important;
   height: auto !important;
 }
+
+/* Horizontal architecture pattern cards */
+.pattern-accordion {
+  display: grid;
+  gap: 18px;
+}
+
+.pattern-row {
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(8, 47, 73, 0.45));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.pattern-row summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.pattern-row summary::-webkit-details-marker {
+  display: none;
+}
+
+.pattern-plus {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  color: #38bdf8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex: 0 0 auto;
+}
+
+.pattern-row[open] .pattern-plus {
+  transform: rotate(45deg);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.pattern-content {
+  padding: 0 28px 26px;
+}
+
+.pattern-content p {
+  margin: 0 0 18px;
+  color: #cbd5e1;
+  line-height: 1.75;
+  max-width: 1100px;
+}
+
+.pattern-content .tag-list {
+  margin-top: 12px;
+}
+
+/* Final horizontal accordion card styling */
+.pattern-accordion {
+  display: grid !important;
+  gap: 18px !important;
+  margin-top: 28px;
+}
+
+.pattern-row {
+  display: block !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(12, 74, 110, 0.42)) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.pattern-row summary {
+  list-style: none !important;
+  cursor: pointer !important;
+  padding: 22px 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+}
+
+.pattern-row summary::-webkit-details-marker {
+  display: none !important;
+}
+
+.pattern-row summary::marker {
+  content: "" !important;
+}
+
+.pattern-plus {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(56, 189, 248, 0.65) !important;
+  background: rgba(8, 47, 73, 0.65) !important;
+  color: #38bdf8 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.7rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+}
+
+.pattern-row[open] .pattern-plus {
+  transform: rotate(45deg) !important;
+  background: rgba(56, 189, 248, 0.18) !important;
+}
+
+.pattern-content {
+  padding: 0 26px 24px !important;
+  border-top: 1px solid rgba(148, 163, 184, 0.18) !important;
+}
+
+.pattern-content p {
+  margin: 18px 0 !important;
+  color: #cbd5e1 !important;
+  line-height: 1.75 !important;
+  font-size: 1rem !important;
+  max-width: 1100px !important;
+}
+
+/* Clean horizontal pattern cards */
+.pattern-card-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.pattern-card {
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(8, 47, 73, 0.5));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  padding: 0;
+  overflow: hidden;
+}
+
+.pattern-card summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.pattern-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.pattern-card summary::marker {
+  content: "";
+}
+
+.plus-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.7);
+  color: #38bdf8;
+  background: rgba(8, 47, 73, 0.65);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.pattern-card[open] .plus-icon {
+  transform: rotate(45deg);
+}
+
+.pattern-card p {
+  margin: 0;
+  padding: 0 28px 20px;
+  color: #cbd5e1;
+  line-height: 1.75;
+  max-width: 1100px;
+}
+
+.pattern-card .tag-list {
+  padding: 0 28px 26px;
+}
+
+/* Align project card buttons */
+.case-study {
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.case-study summary {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.case-study .project-doc-link {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* Align project card content and buttons */
+.case-study summary {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study summary strong {
+  display: block;
+  min-height: 92px;
+}
+
+.case-study summary p {
+  min-height: 92px;
+}
+
+.case-study .project-doc-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Project card diagram thumbnails */
+.case-study summary {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-thumb {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  width: 190px;
+  max-width: 34%;
+  border-radius: 14px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  opacity: 0.9;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.project-thumb:hover {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.case-study .project-doc-link {
+  max-width: fit-content;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .project-thumb {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 18px;
+  }
+}
+
+/* Visible project card thumbnails */
+.case-study summary {
+  position: relative;
+  min-height: 190px;
+  padding-right: 250px;
+}
+
+.project-thumb-link {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  display: block;
+  z-index: 5;
+}
+
+.project-thumb {
+  display: block !important;
+  width: 210px !important;
+  height: 118px !important;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.project-thumb:hover {
+  transform: scale(1.04);
+}
+
+@media (max-width: 900px) {
+  .case-study summary {
+    padding-right: 24px;
+  }
+
+  .project-thumb-link {
+    position: static;
+    margin-top: 16px;
+  }
+
+  .project-thumb {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Reset project cards after removing thumbnails */
+.case-study summary {
+  padding-right: 28px !important;
+  min-height: 260px !important;
+}
+
+.case-study summary strong {
+  max-width: 100% !important;
+  min-height: 92px !important;
+}
+
+.case-study summary em {
+  max-width: 100% !important;
+  display: block !important;
+}
+
+.project-thumb,
+.project-thumb-link {
+  display: none !important;
+}
+
+/* Diagram button on project cards */
+.case-study .diagram-link {
+  margin-left: 12px;
+  border-color: rgba(148, 163, 184, 0.45);
+  color: #cbd5e1;
+}
+
+/* Visible diagram button on project cards */
+.diagram-card-link {
+  margin-top: 14px !important;
+  width: fit-content !important;
+  font-size: 0.78rem !important;
+  padding: 10px 18px !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+  color: #cbd5e1 !important;
+}
+
+/* Force visible diagram links on project cards */
+.case-study summary .visible-diagram-link {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: fit-content !important;
+  margin-top: 12px !important;
+  padding: 10px 18px !important;
+  font-size: 0.78rem !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+  color: #cbd5e1 !important;
+  z-index: 50 !important;
+  position: relative !important;
+}
+
+/* Clickable architecture diagram preview inside project cards */
+.case-study summary {
+  position: relative !important;
+}
+
+.case-study summary .architecture-preview-link {
+  position: absolute !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  display: block !important;
+  width: 175px !important;
+  height: 98px !important;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+}
+
+.case-study summary .architecture-card-preview {
+  display: block !important;
+  width: 175px !important;
+  height: 98px !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(56, 189, 248, 0.55) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45) !important;
+  opacity: 0.95 !important;
+}
+
+.case-study summary .architecture-card-preview:hover {
+  transform: scale(1.04) !important;
+  opacity: 1 !important;
+}
+
+/* Final architecture preview position */
+.case-study summary {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.case-study summary .architecture-preview-link {
+  position: absolute !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  width: 170px !important;
+  height: 95px !important;
+  display: block !important;
+  z-index: 20 !important;
+}
+
+.case-study summary .architecture-card-preview {
+  width: 170px !important;
+  height: 95px !important;
+  max-width: 170px !important;
+  max-height: 95px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(56, 189, 248, 0.55) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+.case-study summary .architecture-card-preview:hover {
+  transform: scale(1.04) !important;
+}

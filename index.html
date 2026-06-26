@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 
 <html lang="en">
   <head>
@@ -21,7 +21,6 @@
       </button>
             <nav class="site-nav" aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#credentials">Credentials</a>
         <a href="#contact">Contact</a>
@@ -91,132 +90,18 @@
   </div>
 </section>
 
-  <section id="experience" class="section experience-section">
-    <div class="section-heading">
-      <p class="eyebrow">Experience</p>
-      <h2>Professional roles across cloud platform operations, automation, and delivery.</h2>
-    </div>
-    <div class="timeline">
-      <article class="timeline-item">
-        <h3>Cloud Administrator, AWS Platform Automation</h3>
-        <p>
-          <strong>Management Science Associates</strong> · Remote · August 2023 - Present
-        </p>
-      </article>
-      <article class="timeline-item">
-        <h3>Cloud Engineer</h3>
-        <p>
-          <strong>Walmart</strong> · Remote · March 2022 - August 2023
-        </p>
-      </article>
-      <article class="timeline-item">
-        <h3>Cloud Engineer</h3>
-        <p>
-          <strong>Utility Data Contractors</strong> · Remote · December 2017 - March 2022
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section id="architecture-patterns" class="section">
-    <div class="section-heading">
-      <p class="eyebrow">Architecture Patterns</p>
-      <h2>Cloud work backed by real architecture, automation, and operating patterns.</h2>
-    </div>
-    <div class="evidence-grid">
-      <article class="evidence-card">
-        <h3>Landing Zone & Account Baselines</h3>
-        <p>
-          Control Tower customization, landing-zone prerequisites, account management, shared-resource buckets,
-          Security Hub setup, StackSet deployment, baseline roles, service-linked roles, CloudWatch, CloudTrail,
-          and AWS Config foundations.
-        </p>
-        <div class="tag-list">
-          <span>Control Tower</span>
-          <span>Organizations</span>
-          <span>StackSets</span>
-          <span>CloudFormation</span>
-        </div>
-      </article>
-      <article class="evidence-card">
-        <h3>Guardrails & Identity Governance</h3>
-        <p>
-          IAM restriction SCPs, VPC and SSM guardrails, DNS access controls, permission boundaries, SAML/SSO role
-          templates, access key controls, privileged-role exceptions, and account-level security standards.
-        </p>
-        <div class="tag-list">
-          <span>IAM</span>
-          <span>SCPs</span>
-          <span>Permission Boundaries</span>
-          <span>Access Reviews</span>
-        </div>
-      </article>
-      <article class="evidence-card">
-        <h3>Security Reporting & Quarterly Reviews</h3>
-        <p>
-          Lambda-based Security Hub findings aggregation, account-to-business-unit mapping, high/critical finding
-          filtering, CSV reporting to S3, control summaries, and evidence used for stakeholder-facing AWS reviews.
-        </p>
-        <div class="tag-list">
-          <span>Security Hub</span>
-          <span>Lambda</span>
-          <span>S3 Reports</span>
-          <span>Compliance</span>
-        </div>
-      </article>
-      <article class="evidence-card">
-        <h3>Systems Manager Operations</h3>
-        <p>
-          Organization-wide Systems Manager visibility using Resource Explorer views, patch scan associations,
-          State Manager patterns, managed execution, inventory management, and operational visibility for EC2 fleets.
-        </p>
-        <div class="tag-list">
-          <span>Systems Manager</span>
-          <span>Patch Visibility</span>
-          <span>State Manager</span>
-          <span>EC2 Operations</span>
-        </div>
-      </article>
-      <article class="evidence-card">
-        <h3>DNS, Ingress & Resilience</h3>
-        <p>
-          Route 53 hosted-zone backup automation, S3 archive storage, SES status notifications, centralized ALB
-          ingress patterns, TLS policy enforcement, HTTP-to-HTTPS redirects, and DNS operations for recovery workflows.
-        </p>
-        <div class="tag-list">
-          <span>Route 53</span>
-          <span>ALB</span>
-          <span>ACM</span>
-          <span>DRS</span>
-        </div>
-      </article>
-      <article class="evidence-card">
-        <h3>Automation & Release Governance</h3>
-        <p>
-          Azure DevOps YAML pipelines, CloudFormation template validation, StackSet delivery, key cycling automation,
-          tagging automation, deployment stages, approval gates, and production troubleshooting runbooks.
-        </p>
-        <div class="tag-list">
-          <span>Azure DevOps</span>
-          <span>Python</span>
-          <span>PowerShell</span>
-          <span>YAML</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
   <section id="projects" class="section">
     <div class="section-heading">
-      <p class="eyebrow">Case Studies</p>
-      <h2>Cloud Platform Case Studies</h2>
+      <p class="eyebrow">PROJECTS</p>
+      <h2>Cloud Platform Projects</h2>
     </div>
-    <p class="section-note">Select a case study to view scope, impact, and tools.</p>
+    <p class="section-note">Select a project to view architecture, scope, impact, and tools.</p>
     <div class="case-study-list">
       <details class="case-study" open>
         <summary>
           <strong>Multi-Account Cloud Governance</strong>
           <em>Control Tower, Organizations, SCPs, IAM, CloudTrail, AWS Config</em>
+          <a class="architecture-preview-link" href="assets/images/aws-multi-account-governance.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/aws-multi-account-governance.png" alt="Multi-Account Cloud Governance architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -229,8 +114,6 @@
             <li><strong>Impact:</strong> improved consistency across accounts, reduced manual governance drift, and gave teams a repeatable operating model for secure cloud usage.</li>
             <li><strong>Tools:</strong> AWS Control Tower, Organizations, IAM, SCPs, CloudTrail, AWS Config, Security Hub, CloudFormation, StackSets.</li>
           </ul>
-        
-              <a class="button project-doc-link" href="projects/multi-account-cloud-governance.html">View full documentation</a>
             </div>
       </details>
 
@@ -238,6 +121,7 @@
         <summary>
           <strong>Infrastructure Deployment Automation</strong>
           <em>CloudFormation StackSets, Azure DevOps, YAML, account lifecycle automation</em>
+          <a class="architecture-preview-link" href="assets/images/infrastructure-deployment-automation.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/infrastructure-deployment-automation.png" alt="Infrastructure Deployment Automation architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -252,6 +136,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/infrastructure-deployment-automation.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/infrastructure-deployment-automation.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -259,6 +144,7 @@
         <summary>
           <strong>Cloud Fleet Operations</strong>
           <em>Systems Manager, EC2 inventory, patch visibility, Resource Explorer</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-fleet-operations.png" alt="Cloud Fleet Operations architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -273,6 +159,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/cloud-fleet-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -280,6 +167,7 @@
         <summary>
           <strong>Credential Rotation Automation</strong>
           <em>SES SMTP rotation, IAM access keys, Lambda, DynamoDB, Secrets Manager</em>
+          <a class="architecture-preview-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/credential-rotation-automation.png" alt="Credential Rotation Automation architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -294,6 +182,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/credential-rotation-automation.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -322,6 +211,7 @@
         <summary>
           <strong>Cloud Cost & Operations Reviews</strong>
           <em>CloudHealth, Trusted Advisor, AWS Config, rightsizing, quarterly reviews</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-cost-operations-reviews.png" alt="Cloud Cost & Operations Reviews architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -336,6 +226,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/cloud-cost-operations-reviews.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -343,6 +234,7 @@
         <summary>
           <strong>DNS & Disaster Recovery Operations</strong>
           <em>Route 53, hosted zone backups, internal DNS, DRS, certificate validation</em>
+          <a class="architecture-preview-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/dns-disaster-recovery-operations.png" alt="DNS & Disaster Recovery Operations architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -357,6 +249,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/dns-disaster-recovery-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -364,6 +257,7 @@
         <summary>
           <strong>Cloud Email Migration & Operations</strong>
           <em>WorkMail, SES, Route 53, Zoho migration planning, SPF/DKIM/DMARC</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-email-migration-operations.png" alt="Cloud Email Migration & Operations architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -378,6 +272,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/cloud-email-migration-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -385,6 +280,7 @@
         <summary>
           <strong>Cloud Web Hosting & LAMP Stack Operations</strong>
           <em>EC2, Apache, MySQL, PHP, WordPress, Route 53, TLS</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-web-hosting-lamp-stack-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-web-hosting-lamp-stack-operations.png" alt="Cloud Web Hosting & LAMP Stack Operations architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -400,6 +296,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/cloud-web-hosting-lamp-stack-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-web-hosting-lamp-stack-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -407,6 +304,7 @@
         <summary>
           <strong>Serverless Application Architecture</strong>
           <em>API Gateway, Lambda, S3, DynamoDB, CloudWatch, IAM</em>
+          <a class="architecture-preview-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/serverless-application-architecture.png" alt="Serverless Application Architecture architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -421,6 +319,7 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/serverless-application-architecture.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
@@ -428,6 +327,7 @@
         <summary>
           <strong>Container DevOps & Application Delivery</strong>
           <em>Docker, ECS, EKS, CI/CD, image build, deployment operations</em>
+          <a class="architecture-preview-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/container-devops-application-delivery.png" alt="Container DevOps & Application Delivery architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
@@ -442,7 +342,107 @@
           </ul>
         
               <a class="button project-doc-link" href="projects/container-devops-application-delivery.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener">View diagram</a>
             </div>
+      </details>
+    </div>
+  </section>
+
+      <section id="architecture-patterns" class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Architecture Patterns</p>
+      <h2>Cloud work backed by real architecture, automation, and operating patterns.</h2>
+    </div>
+
+    <div class="pattern-accordion">
+      <details class="pattern-row">
+        <summary>
+          <span>Landing Zone & Account Baselines</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>Control Tower customization, landing-zone prerequisites, account management, shared-resource buckets, Security Hub setup, StackSet deployment, baseline roles, service-linked roles, CloudWatch, CloudTrail, and AWS Config foundations.</p>
+          <div class="tag-list">
+            <span>Control Tower</span>
+            <span>Organizations</span>
+            <span>StackSets</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="pattern-row">
+        <summary>
+          <span>Guardrails & Identity Governance</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>IAM restriction SCPs, VPC and SSM guardrails, DNS access controls, permission boundaries, SAML/SSO role templates, access key controls, privileged-role exceptions, and account-level security standards.</p>
+          <div class="tag-list">
+            <span>IAM</span>
+            <span>SCPs</span>
+            <span>SSO</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="pattern-row">
+        <summary>
+          <span>Security Reporting & Quarterly Reviews</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>Lambda-based Security Hub findings aggregation, account-to-business-unit mapping, high/critical finding filtering, CSV reporting to S3, control summaries, and evidence used for stakeholder-facing AWS reviews.</p>
+          <div class="tag-list">
+            <span>Security Hub</span>
+            <span>Lambda</span>
+            <span>CloudWatch</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="pattern-row">
+        <summary>
+          <span>Systems Manager Operations</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>Organization-wide Systems Manager visibility using Resource Explorer views, patch scan associations, State Manager patterns, managed execution, inventory management, and operational visibility for EC2 fleets.</p>
+          <div class="tag-list">
+            <span>Systems Manager</span>
+            <span>Patch Visibility</span>
+            <span>Inventory</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="pattern-row">
+        <summary>
+          <span>DNS, Ingress & Resilience</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>Route 53 hosted-zone backup automation, S3 archive storage, SES status notifications, centralized ALB ingress patterns, TLS policy enforcement, HTTP-to-HTTPS redirects, and DNS operations for recovery workflows.</p>
+          <div class="tag-list">
+            <span>Route 53</span>
+            <span>ALB</span>
+            <span>DR</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="pattern-row">
+        <summary>
+          <span>Automation & Release Governance</span>
+          <span class="pattern-plus">+</span>
+        </summary>
+        <div class="pattern-content">
+          <p>Azure DevOps YAML pipelines, CloudFormation template validation, StackSet delivery, key cycling automation, tagging automation, deployment stages, approval gates, and production troubleshooting runbooks.</p>
+          <div class="tag-list">
+            <span>Azure DevOps</span>
+            <span>Python</span>
+            <span>CloudFormation</span>
+          </div>
+        </div>
       </details>
     </div>
   </section>
@@ -506,6 +506,21 @@
 
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
