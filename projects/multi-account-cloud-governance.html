@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Multi-Account Cloud Governance | Rodney Edwin-King</title>
-    <meta name="description" content="Documentation-style cloud governance case study covering AWS multi-account governance, IAM, SCPs, logging, monitoring, and security visibility.">
+    <meta name="description" content="Documentation-style AWS multi-account governance case study covering Control Tower, Organizations, IAM, SCPs, CloudTrail, AWS Config, Security Hub, StackSets, logging, and account baseline operations.">
     <link rel="stylesheet" href="../styles.css">
   </head>
 
@@ -27,130 +27,215 @@
         <h1>Multi-Account Cloud Governance</h1>
 
         <p class="blog-lead">
-          This case study documents how I supported and improved AWS multi-account governance across an enterprise cloud environment.
-          The focus was account structure, IAM controls, SCP guardrails, logging, monitoring, security visibility, and repeatable
-          operating patterns that helped teams use AWS in a more controlled and consistent way.
+          This project documents the design, operation, and improvement of an AWS multi-account governance model.
+          The work focused on account separation, landing-zone controls, IAM governance, service control policies,
+          centralized logging, Config and CloudTrail visibility, Security Hub integration, CloudFormation StackSets,
+          and repeatable operating patterns for secure cloud usage.
         </p>
 
         <p class="blog-meta">
-          Services and tools: AWS Organizations, Control Tower patterns, IAM, SCPs, CloudTrail, AWS Config, Security Hub,
-          CloudWatch, CloudFormation StackSets, AWS CLI, and Azure DevOps.
+          Services and tools: AWS Organizations, AWS Control Tower patterns, IAM, IAM Identity Center, SCPs,
+          CloudFormation, StackSets, Azure DevOps, CloudTrail, AWS Config, Security Hub, GuardDuty, CloudWatch,
+          Amazon S3, EventBridge, SNS, Lambda, Cost and Usage Reports, and account review workflows.
         </p>
 
         <hr>
 
-        <h2>Overview</h2>
+        <h2>Background</h2>
 
         <p>
-          As AWS usage grows, governance becomes more important than simply creating accounts and giving teams access.
-          Each account needs to follow a consistent operating model for security, logging, monitoring, access control,
-          ownership, and compliance review.
+          As cloud environments grow, account creation alone is not enough. Each account needs a consistent operating
+          model for identity, security, logging, network baselines, monitoring, cost visibility, and ownership.
+          Without that structure, teams can end up with different IAM patterns, inconsistent logging, uneven security
+          coverage, missing retention policies, unmanaged resources, and unclear responsibility for remediation.
         </p>
 
         <p>
-          In this environment, the work involved supporting governance across more than 30 AWS accounts. These accounts
-          included application workloads, development and test environments, production environments, shared services,
-          security visibility, and operational support boundaries.
+          The environment behind this project included multiple AWS accounts supporting different workloads,
+          environments, and business functions. Some accounts were production-oriented, some supported development
+          or pre-production work, and others supported shared infrastructure or governance functions. The purpose of
+          the project was to help make those accounts easier to govern, easier to review, and more consistent from an
+          operational and security perspective.
         </p>
 
-        <h2>Problem</h2>
+        <h2>Scope</h2>
 
         <p>
-          The main challenge was consistency. When accounts are created or managed manually, small differences can appear
-          over time. Those differences can affect IAM permissions, logging coverage, monitoring, security reporting,
-          cost visibility, and ownership tracking.
+          The scope covered multi-account governance rather than a single application deployment. The work included
+          account baseline review, landing-zone controls, IAM and role patterns, CloudTrail and AWS Config coverage,
+          security notification flows, Security Hub visibility, cost and usage visibility, and repeatable deployment
+          methods for account-level controls.
         </p>
 
         <p>
-          The business needed a more repeatable governance model so cloud operations could identify risk, support
-          application teams, and maintain a standard baseline across different AWS accounts.
+          The project also included reviewing account-level resources and identifying where standardization could
+          improve operations. Common review areas included EC2, IAM, Lambda, S3, VPC, CloudWatch, CloudFormation,
+          AWS Config, GuardDuty, billing reports, and tagging. The goal was to identify what was working, what was
+          inconsistent, and what could be standardized through account baselines or automation.
+        </p>
+
+        <h2>Current State / Discovery</h2>
+
+        <p>
+          The discovery work showed that many accounts already had important governance components in place, such as
+          CloudTrail logging, CloudWatch alarms, VPN-related monitoring, root MFA, default IAM roles, cost reporting,
+          billing reports, GuardDuty, and AWS Config in most accounts. However, the level of consistency varied by
+          account and by workload.
+        </p>
+
+        <p>
+          Some accounts had strong Infrastructure as Code adoption through CloudFormation and CI/CD pipelines. Other
+          accounts contained more manually created resources, older IAM users or roles, unused resources, inconsistent
+          retention policies, or resources that needed follow-up review. This showed why account governance needed to
+          be treated as an ongoing operating process instead of a one-time setup task.
+        </p>
+
+        <p>
+          The review also highlighted the importance of standard account patterns. Baselines such as CloudTrail,
+          AWS Config, GuardDuty, CloudWatch alarms, cost reports, default IAM roles, root MFA, tagging standards,
+          and network controls give every account a common foundation before application teams build on top of it.
         </p>
 
         <h2>Architecture</h2>
 
         <p>
-          The governance model used AWS Organizations as the central structure. Accounts were separated by purpose so
-          that production workloads, development workloads, shared services, security visibility, and operational tooling
-          could be managed with clearer boundaries.
+          The architecture followed a landing-zone model. AWS Organizations provided the top-level account structure.
+          Control Tower-style patterns provided account baselines and guardrail behavior. Shared accounts supported
+          logging, security visibility, and operational services. Workload accounts hosted application resources.
+          CloudFormation StackSets and pipeline-driven deployments were used to apply controls across accounts and
+          regions in a repeatable way.
         </p>
 
-        <figure class="blog-diagram architecture-image">
-          <img src="../assets/diagrams/multi-account-governance.svg" alt="AWS multi-account governance architecture diagram">
-          <figcaption>AWS multi-account governance architecture showing account structure, security visibility, shared services, workload accounts, baseline automation, and review workflows.</figcaption>
+                <figure class="architecture-placeholder">
+          <a href="../assets/images/aws-multi-account-governance.png" target="_blank" rel="noopener"><img src="../assets/images/aws-multi-account-governance.png" alt="AWS Multi-Account Cloud Governance Architecture Diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;" /></a>
+          <figcaption>
+            AWS multi-account governance architecture showing identity, organization structure, security, centralized logging, shared services, automation, and workload account baselines.
+          </figcaption>
         </figure>
 
-        <h2>What I Did</h2>
+        <h2>Governance Controls</h2>
 
         <p>
-          My work focused on maintaining and improving the governance layer around the AWS account structure.
-          This included reviewing account-level configuration, supporting IAM patterns, working with security tooling,
-          helping with operational reporting, and supporting automation used to standardize cloud controls.
+          The governance model depended on multiple layers of control. AWS Organizations provided the account structure.
+          SCPs provided high-level permission boundaries for member accounts and protected sensitive platform controls.
+          IAM roles and permission boundaries helped define who could administer resources and how cross-account access
+          was performed. IAM Identity Center supported centralized user access patterns instead of relying only on
+          account-local IAM users.
         </p>
 
         <p>
-          I worked with IAM roles, permissions, service-linked roles, SCP-related governance, CloudTrail, AWS Config,
-          Security Hub, CloudWatch, CloudFormation, StackSets, and AWS CLI workflows. The goal was to make the environment
-          easier to operate, easier to review, and less dependent on one-off manual configuration.
+          Logging and visibility were key parts of the governance model. CloudTrail provided API activity visibility.
+          AWS Config provided configuration and compliance visibility. Security Hub and GuardDuty supported security
+          findings and threat-detection visibility. CloudWatch supported alarms, log monitoring, and operational signals.
+          Cost and Usage Reports supported billing and cost review workflows.
         </p>
 
-        <h2>Implementation Approach</h2>
+        <h2>Implementation Details</h2>
 
-        <h3>1. Reviewed the account structure</h3>
+        <h3>1. Account baseline review</h3>
         <p>
-          I started by understanding how accounts were grouped and used. This included identifying production accounts,
-          non-production accounts, shared service accounts, security-related accounts, and accounts used for application
-          or platform operations.
+          I reviewed account-level governance components to understand which accounts had consistent controls and which
+          accounts needed follow-up. The review included IAM users and roles, Config coverage, CloudTrail logging,
+          CloudWatch alarms, GuardDuty, cost reporting, VPC patterns, S3 buckets, Lambda functions, EC2 resources,
+          and CloudFormation usage.
         </p>
 
-        <h3>2. Reviewed access and governance controls</h3>
+        <h3>2. Landing-zone and Control Tower review</h3>
         <p>
-          I reviewed how access was managed across accounts, including IAM roles, permission boundaries, service-linked roles,
-          and organization-level guardrail patterns. The goal was to understand where permissions were standardized and where
-          additional review or cleanup was needed.
+          I reviewed the landing-zone components that support centralized governance. This included understanding how
+          Control Tower-style components create or manage logging, Config, notification, and role resources across
+          accounts. The goal was to understand what should be treated as managed platform infrastructure and what should
+          be handled through separate custom automation.
         </p>
 
-        <h3>3. Supported baseline standardization</h3>
+        <h3>3. Logging and audit flow</h3>
         <p>
-          I supported repeatable baseline patterns using CloudFormation and StackSets. This helped reduce manual drift and
-          made it easier to apply common configuration across multiple AWS accounts.
+          Centralized logging was a key part of the governance pattern. CloudTrail and AWS Config logs were designed
+          to flow into controlled S3 storage, with encryption, access controls, and retention behavior managed through
+          platform standards. This made it easier to support audit visibility and avoid each account handling logs in a
+          completely different way.
         </p>
 
-        <h3>4. Improved security and operational visibility</h3>
+        <h3>4. Config and security notification flow</h3>
         <p>
-          I used security and monitoring services such as Security Hub, AWS Config, CloudTrail, and CloudWatch to support
-          visibility into account posture, findings, logging, and operational health.
+          Config compliance changes and Security Hub-related findings needed a path for review and notification.
+          The governance pattern used event-driven components such as EventBridge, SNS, and Lambda-style forwarding
+          behavior to move important compliance or security signals toward the security account or central notification
+          path. This gave the platform team a better way to track changes across accounts.
         </p>
 
-        <h3>5. Supported review and remediation workflows</h3>
+        <h3>5. StackSet-based standardization</h3>
         <p>
-          I helped surface findings, ownership gaps, stale resources, cost concerns, and remediation items during cloud
-          operations and governance reviews.
+          CloudFormation StackSets were used as a repeatable deployment pattern for controls that needed to exist across
+          multiple accounts or regions. This reduced manual console work and made it easier to standardize IAM roles,
+          security controls, monitoring configuration, account baselines, and supporting platform resources.
         </p>
 
-        <h2>Security and Governance Considerations</h2>
+        <h3>6. Pipeline-driven deployment</h3>
+        <p>
+          Azure DevOps pipelines supported repeatable delivery of CloudFormation templates and StackSet updates. The
+          general flow was to publish templates as build artifacts, stage the templates in an S3 deployment bucket,
+          and then deploy or update the CloudFormation stack or StackSet from the management account. This allowed
+          platform changes to move through a controlled release process instead of relying on one-off manual updates.
+        </p>
+
+        <h2>Validation</h2>
 
         <p>
-          Account separation helped reduce blast radius between environments. IAM and SCP guardrails helped control what
-          actions could be performed. Centralized logging and security tooling helped provide visibility across accounts.
-          These controls were important because governance has to work across many teams and workloads without slowing
-          delivery down unnecessarily.
+          Validation was performed by reviewing account configuration, checking whether standard controls were present,
+          confirming CloudFormation or StackSet deployment behavior, reviewing service outputs, and checking security
+          and operational visibility in tools such as CloudTrail, AWS Config, Security Hub, GuardDuty, CloudWatch,
+          and billing reports.
+        </p>
+
+        <p>
+          The validation process also included identifying drift or cleanup opportunities. Examples included reviewing
+          old IAM users or roles, unused resources, missing retention policies, account-specific exceptions, manually
+          created infrastructure, and resources that could be moved into reusable templates or operational runbooks.
+        </p>
+
+        <h2>Operational Runbook</h2>
+
+        <p>
+          The operational model for this project was not a one-time deployment. It required recurring review. A practical
+          runbook for this work included checking account inventory, validating CloudTrail and Config coverage, reviewing
+          Security Hub and GuardDuty findings, confirming CloudWatch alarms, reviewing IAM users and roles, validating
+          cost and usage reporting, checking tagging coverage, and identifying resources that should be cleaned up,
+          standardized, or automated.
+        </p>
+
+        <p>
+          For new accounts, the operating pattern was to apply standard account baselines early. That included identity,
+          networking, logging, Config, security tooling, cost reporting, tagging, and any required Systems Manager or
+          automation components. For existing accounts, the work was more discovery-heavy: identify what exists, compare
+          it to the baseline, document gaps, and move repeatable fixes into automation where possible.
         </p>
 
         <h2>Outcome</h2>
 
         <p>
-          The work improved consistency across more than 30 AWS accounts and supported a stronger operating model for
-          cloud governance. It also improved visibility into security posture, access patterns, logging coverage,
-          monitoring, and remediation follow-up.
+          The project improved cloud governance by making account structure, security visibility, logging, IAM controls,
+          and deployment patterns easier to understand and operate. It also helped identify where accounts were consistent
+          and where additional cleanup or standardization was needed.
         </p>
 
         <p>
-          The result was a more controlled cloud environment with better structure around governance, security reviews,
-          operational support, and account-level standardization.
+          The strongest operational value came from turning scattered account-level observations into repeatable patterns:
+          use landing-zone baselines where appropriate, deploy reusable controls through CloudFormation and StackSets,
+          keep logs centralized, use security services for visibility, and maintain governance through recurring account
+          reviews instead of one-time setup work.
+        </p>
+
+        <h2>What This Demonstrates</h2>
+
+        <p>
+          This project demonstrates AWS platform engineering beyond basic resource creation. It shows multi-account
+          governance, landing-zone operations, IAM and SCP awareness, centralized logging, security visibility,
+          Infrastructure as Code, CI/CD delivery for platform controls, and operational review across a real AWS estate.
         </p>
 
         <p class="blog-back-link">
-          <a href="../index.html#projects">← Back to Projects</a>
+          <a href="../index.html#projects">? Back to Projects</a>
         </p>
       </article>
     </main>
@@ -162,4 +247,6 @@
     <script src="../script.js"></script>
   </body>
 </html>
+
+
 

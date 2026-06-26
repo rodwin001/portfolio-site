@@ -1734,3 +1734,102 @@ h3 {
 .case-study:hover {
   border-color: rgba(72, 213, 255, 0.45);
 }
+
+/* Architecture placeholder for real diagram replacement */
+.architecture-placeholder {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  border: 1px dashed rgba(72, 213, 255, 0.45);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.architecture-placeholder strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.architecture-placeholder p,
+.architecture-placeholder li,
+.architecture-placeholder figcaption {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.architecture-placeholder code {
+  color: var(--accent);
+}
+
+.project-diagram {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.project-image-block,
+.architecture-placeholder {
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-diagram {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.project-image-block,
+.architecture-placeholder {
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-diagram {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.project-image-block,
+.architecture-placeholder {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Fix architecture diagram overflow */
+.architecture-placeholder {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.architecture-placeholder img,
+.project-diagram {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+/* Final architecture image sizing fix */
+.blog-post .architecture-placeholder {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.blog-post .architecture-placeholder img.project-diagram {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
