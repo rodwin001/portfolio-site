@@ -21,57 +21,334 @@
     </header>
 
     <main class="blog-page">
-      <article class="blog-post">
-        <p class="eyebrow">Project Documentation</p>
-        <h1>Cloud Email Migration & Operations</h1>
+  <article class="blog-post">
+    <p class="eyebrow">Project Documentation</p>
 
-        <p class="blog-lead">This case study documents cloud email operations and migration planning across Amazon WorkMail, SES inbound mail handling, DNS records, routing, and third-party mail platform validation.</p>
-        <p class="blog-meta">Services and tools: Amazon WorkMail, SES, S3, Route 53, MX records, SPF, DKIM, Zoho Mail, mail routing.</p>
+    <h1>Cloud Email Migration &amp; Operations</h1>
 
-        <hr>
+    <p class="blog-lead">
+      This project documents cloud email migration and mail operations work involving Amazon WorkMail, Amazon SES, Route 53
+      DNS records, mail routing validation, mailbox migration planning, SMTP credential handling, inbound and outbound mail
+      testing, and user cutover support. The work focused on improving mail platform readiness, reducing migration risk,
+      validating DNS and mail flow before cutover, and creating a repeatable operational process for supporting users during
+      and after the transition.
+    </p>
 
-        <h2>Overview</h2>
-        <p>The project focused on validating mail flow, DNS readiness, routing behavior, identity configuration, and migration planning for cloud-hosted email services.</p>
+    <p class="blog-meta">
+      Services and tools: Amazon WorkMail, Amazon SES, Route 53, MX records, SPF, DKIM, DMARC, mail routing,
+      inbound and outbound mail flow validation, SMTP credentials, CloudWatch, S3 mail capture, DNS validation,
+      mailbox migration planning, user cutover support, and migration runbooks.
+    </p>
 
-        <h2>Problem</h2>
-        <p>Email migrations require careful DNS, identity, routing, and mail flow validation because users depend on reliable delivery and access.</p>
+    <hr>
 
-        <h2>Architecture</h2>
-        <p>The architecture used mail domains, DNS records, mail routing, SES inbound handling, S3 storage for validation, and third-party mailbox testing.</p>
+    <figure class="blog-diagram architecture-image">
+      <a href="../assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener">
+        <img src="../assets/images/cloud-email-migration-operations.png" alt="Cloud Email Migration & Operations architecture diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;">
+      </a>
+      <figcaption>
+        Cloud email migration and operations workflow using WorkMail, SES, Route 53 DNS records, MX, SPF, DKIM,
+        DMARC, mail flow validation, S3 mail capture, CloudWatch troubleshooting, and user cutover support.
+      </figcaption>
+    </figure>
 
-        <figure class="blog-diagram architecture-image">
-          <img src="../assets/images/cloud-email-migration-operations.png" alt="Cloud Email Migration & Operations architecture diagram">
-          <figcaption>Cloud Email Migration & Operations architecture showing the main service flow, automation layer, visibility layer, and operational outcome.</figcaption>
-        </figure>
+    <h2>Overview</h2>
 
-        <h2>What I Did</h2>
-        <p>I validated DNS records, tested inbound routing, reviewed SES delivery paths, supported migration planning, and documented mail platform behavior.</p>
+    <p>
+      This project documents cloud email migration and mail operations work involving Amazon WorkMail, Amazon SES, Route 53
+      DNS records, mail routing validation, mailbox migration planning, SMTP credential handling, inbound and outbound mail
+      testing, and user cutover support. The work focused on improving mail platform readiness, reducing migration risk,
+      validating DNS and mail flow before cutover, and creating a repeatable operational process for supporting users during
+      and after the transition.
+    </p>
 
-        <h2>Implementation Approach</h2>
+    <p>
+      Email migration is more than moving mailbox data from one platform to another. It requires careful coordination across
+      DNS, identity, mail routing, user access, SMTP authentication, certificate or domain validation, client configuration,
+      spam and reputation controls, mailbox migration timing, and production support. This project treated the migration as
+      an operational cloud platform effort, with emphasis on validation, documentation, troubleshooting, and safe cutover
+      planning.
+    </p>
 
-        <h3>1. Reviewed the current state</h3>
-        <p>I reviewed the existing process, access model, services, operational gaps, and areas where manual work created risk or inconsistency.</p>
+    <h2>Background</h2>
 
-        <h3>2. Mapped the technical workflow</h3>
-        <p>I documented how requests, services, automation, monitoring, and operational follow-up moved through the environment.</p>
+    <p>
+      Cloud-based email environments often depend on multiple AWS and DNS services working together correctly. Amazon
+      WorkMail can provide managed mailbox services, while Amazon SES can support sending, receiving, SMTP-based
+      integrations, domain verification, and mail flow testing. Route 53 and public DNS records are required for MX routing,
+      SPF alignment, DKIM signing, DMARC policy, and service verification. If any of these components are configured
+      incorrectly, users may experience mail delivery issues, authentication failures, rejected messages, or inconsistent
+      client behavior.
+    </p>
 
-        <h3>3. Implemented or supported the changes</h3>
-        <p>I worked with the relevant AWS services, scripts, IAM controls, monitoring tools, and deployment workflows needed to support the project.</p>
+    <p>
+      Migration planning also needed to account for user impact. Mailbox data, aliases, groups, forwarding, SMTP
+      integrations, client access, mobile access, Outlook configuration, and mail routing behavior all needed to be reviewed
+      before moving users to a new platform. A successful migration required both technical readiness and user transition
+      support.
+    </p>
 
-        <h3>4. Validated the result</h3>
-        <p>I reviewed service behavior, logs, configuration state, security findings, access behavior, and operational output to confirm the work was successful.</p>
+    <p>
+      The project focused on creating a safer mail operations model where DNS changes, domain validation, routing tests,
+      SMTP credential updates, mailbox migration steps, and post-cutover troubleshooting were documented and validated
+      before production changes were made.
+    </p>
 
-        <h3>5. Documented the outcome</h3>
-        <p>I captured the architecture, implementation flow, operational value, and follow-up considerations so the work could be reviewed and reused.</p>
+    <h2>Business Problem</h2>
 
-        <h2>Outcome</h2>
-        <p>The work helped prove mail routing behavior, reduce migration uncertainty, and support a safer path toward email platform transition.</p>
+    <p>
+      The business problem was mail platform transition risk. Email is a critical service, and even a small DNS or routing
+      mistake can affect inbound mail delivery, outbound sending, authentication, calendar access, or application-generated
+      messages. Without a clear migration plan, mail flow validation, and rollback awareness, a platform change can quickly
+      turn into a high-impact support issue.
+    </p>
 
-        <p class="blog-back-link">
-          <a href="../index.html#projects">? Back to Projects</a>
-        </p>
-      </article>
-    </main>
+    <p>
+      Another challenge was that mail operations often involve both user-facing services and application integrations.
+      Users need mailbox access and a predictable client experience, while applications may rely on SMTP credentials,
+      Amazon SES sending, verified identities, or specific routing behavior. These dependencies have to be identified and
+      validated before cutover so the migration does not break automated mail delivery or business workflows.
+    </p>
+
+    <p>
+      The platform need was to create a controlled migration and operations workflow that improved DNS readiness, validated
+      inbound and outbound mail flow, strengthened troubleshooting, reduced operational risk, and provided clearer support
+      steps for users and application owners.
+    </p>
+
+    <h2>Architecture</h2>
+
+    <p>
+      The architecture used public DNS as the foundation for mail platform control. Route 53 hosted zones and DNS records
+      supported MX routing, SPF authorization, DKIM signing, DMARC policy, and domain or identity verification. These records
+      determined where inbound mail was delivered, which systems were authorized to send mail, and how recipient systems
+      evaluated message authenticity.
+    </p>
+
+    
+
+    <p>
+      Amazon WorkMail supported managed mailbox operations, including user mailboxes, mailbox access, aliases, and mail
+      platform administration. Amazon SES supported mail sending and receiving workflows, verified identities, SMTP
+      credentials, receipt rules, testing, and application mail integrations. For testing and validation, SES receiving
+      rules could capture inbound messages to Amazon S3 so headers, routing behavior, and delivery paths could be reviewed
+      without relying only on a mailbox client.
+    </p>
+
+    <p>
+      CloudWatch supported operational troubleshooting through logs, metrics, alarms, and service-level visibility where
+      available. S3 supported test mail capture and raw message review. SMTP credentials and application mail settings
+      were handled through a controlled process so applications could be updated without exposing sensitive values or
+      relying on informal handoffs.
+    </p>
+
+    <p>
+      The overall pattern connected DNS, mail platform services, identity verification, mail routing, application sending,
+      user access, testing, monitoring, and support workflows into one migration operating model. This helped ensure that
+      mail flow was validated before and after cutover.
+    </p>
+
+    <h2>What I Did</h2>
+
+    <p>
+      I supported cloud email migration and operations by reviewing DNS requirements, validating Route 53 mail records,
+      checking MX, SPF, DKIM, and DMARC behavior, supporting Amazon WorkMail administration, validating Amazon SES sending
+      and receiving behavior, and helping define the operational steps required for mailbox migration and user cutover.
+    </p>
+
+    <p>
+      I also supported inbound and outbound mail flow testing. This included validating that domains or identities were
+      verified, that DNS records were published correctly, that inbound routing followed the expected path, and that
+      outbound messages aligned with SPF, DKIM, and DMARC expectations. When mail flow did not behave as expected, the
+      investigation included DNS lookup results, message headers, SES behavior, WorkMail configuration, CloudWatch logs,
+      and S3-captured test messages.
+    </p>
+
+    <p>
+      The work also included operational handoff planning. Mail migrations require coordination with users, application
+      owners, support teams, and administrators. I helped structure the migration process around test validation, cutover
+      readiness, SMTP credential updates, client access checks, post-cutover troubleshooting, and runbook documentation.
+    </p>
+
+    <h2>Implementation Details</h2>
+
+    <h3>1. DNS readiness review</h3>
+    <p>
+      The migration process began with DNS readiness. Route 53 hosted zones and DNS records were reviewed to confirm that
+      mail-related records were accurate and aligned with the intended mail platform. MX records controlled inbound mail
+      routing. SPF records identified authorized sending services. DKIM records supported message signing and verification.
+      DMARC policy helped define how receiving systems should treat messages that failed authentication checks.
+    </p>
+
+    <h3>2. Domain and identity verification</h3>
+    <p>
+      Amazon SES and mail platforms often require domain or identity verification before mail can be sent or received
+      reliably. Verification records were created in DNS and then validated through the service console. This step was
+      important because incomplete verification could block sending, prevent DKIM signing, or create inconsistent mail
+      behavior during testing.
+    </p>
+
+    <h3>3. MX routing and inbound mail flow</h3>
+    <p>
+      Inbound mail flow depended on the correct MX records and routing behavior. During testing, inbound messages were sent
+      from external sources and reviewed to confirm that they reached the intended mail platform or test route. Where SES
+      receiving was used, receipt rules and S3 capture helped confirm that inbound messages were accepted and stored for
+      inspection. This made it easier to validate routing behavior before production cutover.
+    </p>
+
+    <h3>4. SPF, DKIM, and DMARC validation</h3>
+    <p>
+      SPF, DKIM, and DMARC were reviewed as part of mail security and deliverability readiness. SPF helped authorize sending
+      sources. DKIM helped verify message integrity and domain alignment. DMARC provided policy and reporting behavior for
+      messages that failed authentication. These records were reviewed carefully because incorrect values can affect
+      outbound deliverability or cause legitimate messages to be treated as suspicious.
+    </p>
+
+    <h3>5. Amazon WorkMail operations</h3>
+    <p>
+      Amazon WorkMail operations included mailbox administration, user access review, alias and group considerations, client
+      configuration, and mailbox migration planning. User readiness depended on more than mailbox creation. Users needed to
+      know how to access mail, what client settings applied, how cutover would affect them, and where to report issues after
+      migration.
+    </p>
+
+    <h3>6. Amazon SES sending and receiving</h3>
+    <p>
+      Amazon SES supported both application sending and receiving test workflows. Sending required verified identities,
+      approved sending configuration, and SMTP credentials where applications used SMTP authentication. Receiving workflows
+      could use receipt rules to route messages to S3 or other targets for validation. SES helped support both production
+      mail integrations and migration testing.
+    </p>
+
+    <h3>7. SMTP credential handling</h3>
+    <p>
+      SMTP credentials required controlled handling because they could affect application-generated mail. Credential updates
+      needed to be coordinated with application owners and stored through approved mechanisms. The process required clear
+      communication, validation that applications could authenticate successfully, and a rollback path if a credential update
+      caused mail delivery failure.
+    </p>
+
+    <h3>8. S3 mail capture and message-header review</h3>
+    <p>
+      S3 mail capture provided a useful validation method for inbound routing and test messages. Captured raw messages could
+      be reviewed for headers, sender, recipient, routing path, authentication results, and delivery behavior. This helped
+      improve troubleshooting because the team could inspect the actual message rather than relying only on user reports or
+      mailbox client behavior.
+    </p>
+
+    <h3>9. CloudWatch and operational troubleshooting</h3>
+    <p>
+      CloudWatch supported mail operations by helping surface service events, logs, metrics, and troubleshooting signals
+      where available. When mail flow issues occurred, CloudWatch data was reviewed alongside DNS results, SES configuration,
+      WorkMail settings, message headers, and application logs. This helped create a more complete troubleshooting picture.
+    </p>
+
+    <h3>10. Migration runbooks and cutover planning</h3>
+    <p>
+      Migration runbooks documented the required steps before, during, and after cutover. These included DNS checks,
+      verification records, mailbox readiness, test mail flow, SMTP credential updates, MX record changes, user access
+      validation, monitoring, rollback considerations, and post-cutover support. A documented runbook helped reduce risk
+      during time-sensitive migration windows.
+    </p>
+
+    <h2>Validation</h2>
+
+    <p>
+      Validation began with DNS checks. MX, SPF, DKIM, DMARC, and verification records needed to be published correctly and
+      resolvable from public DNS. DNS validation confirmed that mail routing and authentication records were visible before
+      any production cutover took place.
+    </p>
+
+    <p>
+      Inbound validation focused on confirming that external messages reached the intended destination. Test messages were
+      sent from outside the environment and reviewed through the mailbox platform or SES receiving path. When S3 capture was
+      used, the raw message was inspected to confirm the sender, recipient, delivery path, authentication results, and
+      receipt behavior.
+    </p>
+
+    <p>
+      Outbound validation focused on confirming that users and applications could send mail successfully. This included
+      reviewing SMTP authentication, verified identities, sender alignment, DKIM signing, SPF authorization, and recipient
+      delivery behavior. Application-generated mail needed additional validation because it often depended on stored SMTP
+      credentials or service-specific sending configuration.
+    </p>
+
+    <p>
+      Cutover validation included confirming that mailboxes were accessible, messages were delivered correctly, users could
+      sign in through the expected access path, mail clients behaved as expected, and support teams had a clear process for
+      troubleshooting issues. Validation was treated as an operational requirement, not a final optional step.
+    </p>
+
+    <h2>Operational Workflow</h2>
+
+    <p>
+      The operational workflow began with discovery and planning. Existing mail domains, DNS records, mailbox dependencies,
+      SMTP integrations, user access requirements, aliases, groups, forwarding behavior, and application sending patterns
+      were reviewed. This helped identify what needed to be migrated, what needed to be validated, and which dependencies
+      could affect cutover.
+    </p>
+
+    <p>
+      The next step was platform readiness. Domain verification records were created, SPF, DKIM, and DMARC were reviewed,
+      mailboxes or test users were prepared, SES sending and receiving configuration was validated, and test mail flow was
+      confirmed. This provided evidence that the platform was ready before changing production routing.
+    </p>
+
+    <p>
+      Cutover followed a controlled sequence. The current DNS state was reviewed, the approved MX or routing change was
+      applied, DNS propagation was monitored, inbound and outbound mail flow was tested, and user access was validated.
+      Support teams then monitored user reports, message delivery behavior, SMTP integrations, and any application mail
+      failures.
+    </p>
+
+    <p>
+      Post-cutover support focused on issue resolution and stabilization. Common troubleshooting areas included incorrect
+      DNS records, stale cached records, SMTP authentication errors, missing aliases, client configuration issues, message
+      delivery delays, SPF or DKIM alignment problems, and application-specific credential updates. Findings were documented
+      and used to improve the runbook for future migrations or mail platform changes.
+    </p>
+
+    <h2>Outcome</h2>
+
+    <p>
+      The project improved mail platform readiness by creating a more structured approach to DNS validation, mail flow
+      testing, SMTP credential handling, and user cutover support. Instead of treating migration as only a mailbox move, the
+      process accounted for the full operational path required for successful email delivery and user access.
+    </p>
+
+    <p>
+      The work also reduced operational risk by validating MX routing, SPF, DKIM, DMARC, SES behavior, WorkMail access, S3
+      mail capture, and outbound sending before production changes. This made troubleshooting easier and reduced the chance
+      that unknown dependencies would appear during cutover.
+    </p>
+
+    <p>
+      The biggest value was stronger runbook discipline and clearer transition support. The migration process created a
+      repeatable workflow for planning, validating, cutting over, monitoring, and supporting users after the change. This
+      helped improve confidence in mail platform operations and made future email changes easier to manage.
+    </p>
+
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      This project demonstrates practical cloud email operations experience across Amazon WorkMail, Amazon SES, Route 53,
+      MX records, SPF, DKIM, DMARC, domain verification, identity validation, inbound and outbound mail flow testing, SMTP
+      credentials, CloudWatch troubleshooting, S3 mail capture, mailbox migration planning, user cutover support, and
+      migration runbooks.
+    </p>
+
+    <p>
+      It also demonstrates platform engineering judgment. Email migration requires more than changing MX records. It
+      requires understanding DNS, authentication, mail routing, user access, application sending, credential handling,
+      validation, rollback planning, and operational support. This project shows how those components can be organized into
+      a safer migration model that improves mail platform readiness, strengthens validation, and reduces operational risk.
+    </p>
+
+    <p class="blog-back-link">
+      <a href="../index.html#projects">&larr; Back to Projects</a>
+    </p>
+  </article>
+</main>
 
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Rodney Edwin-King. Cloud Platform Engineering, Governance, Security, and Application Operations.</p>
@@ -80,4 +357,7 @@
     <script src="../script.js"></script>
   </body>
 </html>
+
+
+
 

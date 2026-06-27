@@ -21,57 +21,330 @@
     </header>
 
     <main class="blog-page">
-      <article class="blog-post">
-        <p class="eyebrow">Project Documentation</p>
-        <h1>DNS & Disaster Recovery Operations</h1>
+  <article class="blog-post">
+    <p class="eyebrow">Project Documentation</p>
 
-        <p class="blog-lead">This case study documents how I supported DNS, certificate validation, disaster recovery operations, health checks, and cloud recovery workflows.</p>
-        <p class="blog-meta">Services and tools: Route 53, ACM, AWS DRS, CloudWatch health checks, EC2, IAM, AWS CLI.</p>
+    <h1>DNS &amp; Disaster Recovery Operations</h1>
 
-        <hr>
+    <p class="blog-lead">
+      This project documents DNS and disaster recovery operations for AWS-hosted workloads. The work focused on improving
+      DNS control, supporting safer production DNS changes, validating ACM certificate records, maintaining hosted zone
+      visibility, reviewing Route 53 records, and supporting disaster recovery readiness through AWS Elastic Disaster
+      Recovery, recovery runbooks, replication checks, failover planning, and post-recovery validation.
+    </p>
 
-        <h2>Overview</h2>
-        <p>The project focused on operational support for DNS, certificates, recovery readiness, health checks, and infrastructure components that support application availability.</p>
+    <p class="blog-meta">
+      Services and tools: Amazon Route 53, hosted zones, DNS records, ACM certificate validation, health checks,
+      failover routing concepts, AWS Elastic Disaster Recovery, recovery instances, replication readiness,
+      CloudWatch alarms, Systems Manager, validation workflows, and production-safe change management.
+    </p>
 
-        <h2>Problem</h2>
-        <p>DNS and recovery workflows require careful validation because small mistakes can affect application availability, certificate issuance, routing, and recovery readiness.</p>
+    <hr>
 
-        <h2>Architecture</h2>
-        <p>The architecture used Route 53 hosted zones, ACM validation records, health checks, DRS-related recovery components, and operational monitoring.</p>
+    <figure class="blog-diagram architecture-image">
+      <a href="../assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener">
+        <img src="../assets/images/dns-disaster-recovery-operations.png" alt="DNS & Disaster Recovery Operations architecture diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;">
+      </a>
+      <figcaption>
+        DNS and disaster recovery operations workflow using Route 53, hosted zones, ACM validation, health checks,
+        AWS Elastic Disaster Recovery, recovery instances, CloudWatch, and DNS cutover planning.
+      </figcaption>
+    </figure>
 
-        <figure class="blog-diagram architecture-image">
-          <a href="../assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener"><img src="../assets/images/dns-disaster-recovery-operations.png" alt="DNS & Disaster Recovery Operations architecture diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;"></a>
-          <figcaption>DNS & Disaster Recovery Operations architecture showing the main service flow, automation layer, visibility layer, and operational outcome.</figcaption>
-        </figure>
+    <h2>Overview</h2>
 
-        <h2>What I Did</h2>
-        <p>I supported DNS record changes, certificate validation, health check review, disaster recovery support tasks, and operational troubleshooting.</p>
+    <p>
+      This project documents DNS and disaster recovery operations for AWS-hosted workloads. The work focused on improving
+      DNS control, supporting safer production DNS changes, validating ACM certificate records, maintaining hosted zone
+      visibility, reviewing Route 53 records, and supporting disaster recovery readiness through AWS Elastic Disaster
+      Recovery, recovery runbooks, replication checks, failover planning, and post-recovery validation.
+    </p>
 
-        <h2>Implementation Approach</h2>
+    <p>
+      The project connected two operational areas that are closely related during production support: DNS and recovery.
+      DNS records control how users and systems reach applications, while disaster recovery processes determine how those
+      applications can be restored or failed over when a primary environment is unavailable. The goal was to support a
+      safer operating model where DNS changes, certificate validation, health checks, recovery instances, replication
+      readiness, and failover steps were reviewed and validated before they were needed during an incident.
+    </p>
 
-        <h3>1. Reviewed the current state</h3>
-        <p>I reviewed the existing process, access model, services, operational gaps, and areas where manual work created risk or inconsistency.</p>
+    <h2>Background</h2>
 
-        <h3>2. Mapped the technical workflow</h3>
-        <p>I documented how requests, services, automation, monitoring, and operational follow-up moved through the environment.</p>
+    <p>
+      DNS is one of the highest-risk operational areas in cloud infrastructure because a small record change can affect
+      application access, certificate validation, mail routing, internal service discovery, or recovery traffic. In AWS,
+      Route 53 hosted zones, DNS records, health checks, private zones, public zones, and certificate validation records
+      all need to be managed with clear ownership and production-safe change control.
+    </p>
 
-        <h3>3. Implemented or supported the changes</h3>
-        <p>I worked with the relevant AWS services, scripts, IAM controls, monitoring tools, and deployment workflows needed to support the project.</p>
+    <p>
+      Disaster recovery has the same requirement for discipline. Recovery is not only about having replicated servers or
+      backups available. It also requires runbooks, launch settings, replication health checks, recovery instance validation,
+      network readiness, security group review, DNS cutover steps, and monitoring after failover. A recovery plan that is
+      not tested or documented creates operational risk because the team may not know exactly what to do when a real
+      outage occurs.
+    </p>
 
-        <h3>4. Validated the result</h3>
-        <p>I reviewed service behavior, logs, configuration state, security findings, access behavior, and operational output to confirm the work was successful.</p>
+    <p>
+      This project supported a practical AWS operations model for both areas. DNS changes were handled with validation and
+      controlled access, while recovery planning used AWS Elastic Disaster Recovery concepts, replication readiness checks,
+      CloudWatch monitoring, and Route 53-based cutover planning to improve recovery readiness.
+    </p>
 
-        <h3>5. Documented the outcome</h3>
-        <p>I captured the architecture, implementation flow, operational value, and follow-up considerations so the work could be reviewed and reused.</p>
+    <h2>Business Problem</h2>
 
-        <h2>Outcome</h2>
-        <p>The work improved reliability around DNS operations, certificate workflows, and recovery support activities.</p>
+    <p>
+      The business problem was operational risk around DNS changes and recovery execution. DNS records often support
+      production applications, internal services, certificates, mail systems, APIs, and recovery endpoints. If a record is
+      changed incorrectly, deleted accidentally, or not documented clearly, application access can be interrupted and
+      troubleshooting becomes more difficult.
+    </p>
 
-        <p class="blog-back-link">
-          <a href="../index.html#projects">? Back to Projects</a>
-        </p>
-      </article>
-    </main>
+    <p>
+      Disaster recovery created a related problem. Replication may be configured, but recovery readiness depends on many
+      details beyond replication itself. Source servers need the correct replication agent, IAM permissions, launch settings,
+      security groups, network paths, and post-launch validation. DNS cutover also needs to be planned so recovered
+      applications can be reached after failover.
+    </p>
+
+    <p>
+      The platform need was to create a safer operating model that improved DNS control, clarified production change steps,
+      supported recovery planning, reduced operational risk, and made validation part of the normal process instead of an
+      afterthought.
+    </p>
+
+    <h2>Architecture</h2>
+
+    <p>
+      The DNS architecture used Amazon Route 53 as the central DNS service for hosted zones and record management. Public
+      hosted zones supported internet-facing records, while private hosted zones supported internal service discovery where
+      appropriate. DNS records were reviewed for purpose, ownership, routing behavior, and production impact. ACM
+      certificate validation used DNS validation records so certificates could be issued and renewed through controlled
+      Route 53 record creation.
+    </p>
+
+    
+
+    <p>
+      Route 53 health checks and failover routing concepts supported resilience planning. Health checks could be used to
+      monitor endpoint availability, while failover records or planned record updates could support traffic movement during
+      a recovery event. For production-safe operations, DNS changes were treated as controlled changes that required record
+      verification, TTL awareness, rollback planning, and post-change validation.
+    </p>
+
+    <p>
+      The disaster recovery architecture used AWS Elastic Disaster Recovery to replicate source servers and prepare recovery
+      instances in AWS. Source servers required the replication agent, the correct IAM permissions, and verified replication
+      status. Recovery settings, launch templates, networking, security groups, instance profiles, and post-launch actions
+      needed to be reviewed before an actual recovery event.
+    </p>
+
+    <p>
+      DNS and DRS were connected through the failover process. After a recovery instance was launched and validated, DNS
+      records could be updated to point users or dependent systems to the recovered workload. In more advanced patterns,
+      Systems Manager automation or command documents could support controlled DNS record updates after DRS recovery. This
+      helped make recovery execution more repeatable and reduced the risk of missed manual steps.
+    </p>
+
+    <h2>What I Did</h2>
+
+    <p>
+      I supported DNS operations by reviewing Route 53 hosted zones, DNS records, ACM validation records, record ownership,
+      hosted zone access patterns, and production-safe DNS change steps. This included validating whether certificate
+      validation records were created correctly, confirming records resolved as expected, reviewing DNS change impact, and
+      helping ensure changes were completed through the correct access path and change process.
+    </p>
+
+    <p>
+      I also supported disaster recovery operations by reviewing AWS Elastic Disaster Recovery readiness, source server
+      registration requirements, replication status, launch settings, recovery planning, and validation steps. The work
+      required understanding how replication agents, IAM instance profiles, source servers, recovery instances, networking,
+      security groups, CloudWatch metrics, and DNS cutover steps fit together during a recovery workflow.
+    </p>
+
+    <p>
+      The project also involved runbook discipline. DNS and recovery work needs clear documentation because these activities
+      often happen during urgent support windows or planned change events. I helped organize the process around repeatable
+      steps: review the current state, make the approved change, validate DNS or replication behavior, document the result,
+      and preserve rollback or recovery guidance.
+    </p>
+
+    <h2>Implementation Details</h2>
+
+    <h3>1. Route 53 hosted zone review</h3>
+    <p>
+      Route 53 hosted zones were reviewed as the starting point for DNS control. The review focused on which hosted zones
+      existed, whether they were public or private, what records they contained, and which records supported production,
+      internal services, certificates, or recovery workflows. This helped improve DNS visibility and made it easier to
+      understand the operational impact of record changes.
+    </p>
+
+    <h3>2. DNS record management</h3>
+    <p>
+      DNS records were treated as production infrastructure. Record changes required checking the current value, confirming
+      the requested value, understanding TTL behavior, identifying the application or service supported by the record, and
+      validating resolution after the change. This reduced DNS change risk and made troubleshooting easier when records did
+      not behave as expected.
+    </p>
+
+    <h3>3. ACM certificate validation</h3>
+    <p>
+      ACM certificate workflows required DNS validation records in Route 53. Certificate validation depended on creating
+      the correct CNAME records for the requested domain and any wildcard names. After the records were created, validation
+      required confirming that ACM moved from pending validation to issued and that the record remained available for future
+      renewal eligibility.
+    </p>
+
+    <h3>4. Health checks and failover routing concepts</h3>
+    <p>
+      Route 53 health checks and failover routing concepts were part of the resilience model. Health checks can support
+      endpoint monitoring, while failover records or planned DNS updates can support traffic movement during an outage or
+      recovery event. The review process considered how DNS would be changed, who would approve the change, what TTL should
+      be expected, and how application access would be validated after failover.
+    </p>
+
+    <h3>5. DNS backup and recovery readiness</h3>
+    <p>
+      Hosted zone records and DNS configuration were considered part of recovery readiness. DNS records are often required
+      to restore application access after an outage, so having a clear view of hosted zone contents, record purpose, and
+      recovery-related DNS steps helped strengthen recoverability. DNS backup or export patterns also supported safer
+      recovery and review by preserving a reference point for important records.
+    </p>
+
+    <h3>6. AWS Elastic Disaster Recovery source server setup</h3>
+    <p>
+      AWS Elastic Disaster Recovery depended on registering source servers with the replication service. This required
+      installing the replication agent, confirming the instance profile had the required permissions, and validating that
+      the source server appeared in the DRS console. Registration alone was not enough; replication health, launch settings,
+      and recovery configuration also needed to be reviewed.
+    </p>
+
+    <h3>7. Replication readiness review</h3>
+    <p>
+      Replication readiness was validated by checking whether source servers were replicating successfully and whether any
+      replication errors needed follow-up. CloudWatch metrics and DRS status views supported ongoing review. The goal was
+      to identify replication problems before a real recovery event, not during one.
+    </p>
+
+    <h3>8. Recovery instance and launch settings</h3>
+    <p>
+      DRS launch settings needed to be reviewed so recovery instances would start with the expected instance type, subnet,
+      security groups, instance profile, storage configuration, and network behavior. Recovery testing needed to confirm
+      that the launched instance was reachable, that application services started correctly, and that required monitoring
+      and access controls were present.
+    </p>
+
+    <h3>9. DNS cutover planning</h3>
+    <p>
+      DNS cutover planning connected the recovery instance to the application access path. After recovery, Route 53 records
+      may need to be updated to point to a recovered instance, load balancer, or private IP address. Cutover planning
+      included record identification, current value review, target value confirmation, TTL awareness, validation commands,
+      and rollback steps.
+    </p>
+
+    <h3>10. CloudWatch monitoring and alarms</h3>
+    <p>
+      CloudWatch supported both DNS-adjacent operations and disaster recovery readiness. Metrics, logs, and alarms helped
+      identify health issues, replication problems, endpoint failures, or post-recovery application concerns. Monitoring
+      was important because recovery is not complete until the restored workload is operating and observable.
+    </p>
+
+    <h2>Validation</h2>
+
+    <p>
+      DNS validation focused on confirming that records existed, resolved correctly, and supported the intended application
+      or certificate workflow. For ACM validation, this meant confirming that the DNS validation record was present and that
+      the certificate moved to an issued state. For production records, validation meant confirming the current record value,
+      checking DNS resolution, testing the application endpoint where appropriate, and documenting the final state.
+    </p>
+
+    <p>
+      Disaster recovery validation focused on readiness before failover and functionality after recovery. Before failover,
+      source servers needed healthy replication status, correct permissions, reviewed launch settings, and no unresolved
+      replication errors. After recovery, validation included confirming the recovery instance launched, the operating
+      system and application services were available, network access worked as expected, CloudWatch monitoring was active,
+      and DNS could be updated or validated according to the runbook.
+    </p>
+
+    <p>
+      Change validation also included rollback awareness. For DNS changes, this meant knowing the previous record value and
+      how to restore it if needed. For recovery operations, this meant understanding when to continue with failover, when
+      to stop and investigate, and how to document post-test or post-incident findings for follow-up.
+    </p>
+
+    <h2>Operational Workflow</h2>
+
+    <p>
+      The operational workflow for DNS began with request review. The requested record, domain, hosted zone, record type,
+      current value, new value, TTL, and business purpose were reviewed before making changes. For certificate validation,
+      the ACM-provided DNS validation records were created in the appropriate hosted zone and then validated through ACM and
+      DNS lookup results.
+    </p>
+
+    <p>
+      For production DNS changes, the workflow followed a controlled sequence: review the current record, confirm approval,
+      make the change, validate DNS resolution, test the application path, document the change, and preserve rollback
+      details. This helped reduce operational risk and made it easier to troubleshoot if users or systems reported access
+      issues after a DNS update.
+    </p>
+
+    <p>
+      The disaster recovery workflow began with readiness review. Source servers were checked for DRS registration,
+      replication health, launch configuration, network settings, and required IAM permissions. Recovery testing then
+      involved launching recovery instances in a controlled way, validating operating system and application availability,
+      checking monitoring, and confirming whether DNS changes would be required for application access.
+    </p>
+
+    <p>
+      During a failover or recovery test, the workflow moved from infrastructure recovery to access validation. Once the
+      recovery instance or target endpoint was available, DNS records could be updated according to the runbook. After DNS
+      propagation and endpoint validation, the recovered workload was monitored through CloudWatch and any issues were
+      recorded for remediation or runbook improvement.
+    </p>
+
+    <h2>Outcome</h2>
+
+    <p>
+      The project improved DNS control by treating Route 53 records, ACM validation records, hosted zones, and DNS changes
+      as production infrastructure that required review, validation, and documentation. This reduced operational risk and
+      made DNS troubleshooting more structured.
+    </p>
+
+    <p>
+      The work also improved recovery readiness by connecting DRS replication, recovery instance launch settings, monitoring,
+      DNS cutover planning, and validation into a clearer operating model. Recovery planning became more practical because
+      it accounted for the steps required after an instance was recovered, including network access, application validation,
+      monitoring, and DNS updates.
+    </p>
+
+    <p>
+      The biggest operational value was stronger runbook discipline. DNS and disaster recovery activities are time-sensitive
+      and high impact, so having repeatable steps, validation checks, and rollback awareness helped improve confidence in
+      production changes and recovery planning.
+    </p>
+
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      This project demonstrates practical AWS operations experience across Route 53, hosted zones, DNS records, ACM
+      certificate validation, Route 53 health check and failover concepts, AWS Elastic Disaster Recovery, replication
+      readiness, recovery instances, Systems Manager-based recovery actions, CloudWatch monitoring, production-safe change
+      management, and operational runbooks.
+    </p>
+
+    <p>
+      It also demonstrates platform engineering judgment. DNS and disaster recovery work require more than knowing which
+      console page to open. They require understanding access paths, certificate validation, TTL behavior, routing impact,
+      recovery dependencies, replication health, network configuration, monitoring, rollback planning, and stakeholder
+      communication. This project shows how those pieces can be organized into a safer operating model that improves DNS
+      control, strengthens recovery readiness, and reduces operational risk.
+    </p>
+
+    <p class="blog-back-link">
+      <a href="../index.html#projects">&larr; Back to Projects</a>
+    </p>
+  </article>
+</main>
 
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Rodney Edwin-King. Cloud Platform Engineering, Governance, Security, and Application Operations.</p>
@@ -80,5 +353,8 @@
     <script src="../script.js"></script>
   </body>
 </html>
+
+
+
 
 

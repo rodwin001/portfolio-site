@@ -21,57 +21,371 @@
     </header>
 
     <main class="blog-page">
-      <article class="blog-post">
-        <p class="eyebrow">Project Documentation</p>
-        <h1>Container DevOps & Application Delivery</h1>
+  <article class="blog-post">
+    <p class="eyebrow">Project Documentation</p>
 
-        <p class="blog-lead">This case study documents container-based application delivery concepts using Docker images, registries, pipeline workflows, deployment environments, and operational validation.</p>
-        <p class="blog-meta">Services and tools: Docker, container images, registry workflows, CI/CD pipelines, YAML, Git, cloud deployment environments.</p>
+    <h1>Container DevOps &amp; Application Delivery</h1>
 
-        <hr>
+    <p class="blog-lead">
+      This project documents a container DevOps and application delivery model for packaging, building, storing, deploying,
+      validating, and supporting containerized applications. The work focused on using Docker, Dockerfiles, container image
+      tagging, private container registries such as Amazon ECR, CI/CD pipelines, Azure DevOps or GitHub Actions, build and
+      release stages, environment configuration, secrets handling, container runtime settings, ECS or EKS concepts, load
+      balancing, CloudWatch logs, IAM roles, vulnerability scanning, rollback planning, deployment validation, and
+      operational runbooks.
+    </p>
 
-        <h2>Overview</h2>
-        <p>The project focused on packaging applications into containers and understanding how container images move through build, registry, deployment, and operations workflows.</p>
+    <p class="blog-meta">
+      Services and tools: Docker, Dockerfiles, container images, image tagging, Amazon ECR, CI/CD pipelines,
+      Azure DevOps or GitHub Actions, ECS or EKS concepts, environment variables, secrets handling, IAM roles,
+      load balancing, CloudWatch logs, vulnerability scanning, rollback planning, deployment validation, and runbooks.
+    </p>
 
-        <h2>Problem</h2>
-        <p>Application delivery can become inconsistent when environments are configured differently. Containers help standardize packaging but still require proper build, registry, deployment, and monitoring practices.</p>
+    <hr>
 
-        <h2>Architecture</h2>
-        <p>The architecture used application source code, Docker build workflows, image registry storage, pipeline automation, and deployment targets.</p>
+    <figure class="blog-diagram architecture-image">
+      <a href="../assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener">
+        <img src="../assets/images/container-devops-application-delivery.png" alt="Container DevOps & Application Delivery architecture diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;">
+      </a>
+      <figcaption>
+        Container DevOps and application delivery workflow using Docker, CI/CD pipelines, Amazon ECR, ECS or EKS concepts,
+        IAM roles, load balancing, CloudWatch logs, vulnerability scanning, validation, and rollback planning.
+      </figcaption>
+    </figure>
 
-        <figure class="blog-diagram architecture-image">
-          <img src="../assets/images/container-devops-application-delivery.png" alt="Container DevOps & Application Delivery architecture diagram">
-          <figcaption>Container DevOps & Application Delivery architecture showing the main service flow, automation layer, visibility layer, and operational outcome.</figcaption>
-        </figure>
+    <h2>Overview</h2>
 
-        <h2>What I Did</h2>
-        <p>I reviewed container build concepts, image behavior, environment variables, networking, storage, and how containers support application delivery workflows.</p>
+    <p>
+      This project documents a container DevOps and application delivery model for packaging, building, storing, deploying,
+      validating, and supporting containerized applications. The work focused on using Docker, Dockerfiles, container image
+      tagging, private container registries such as Amazon ECR, CI/CD pipelines, Azure DevOps or GitHub Actions, build and
+      release stages, environment configuration, secrets handling, container runtime settings, ECS or EKS concepts, load
+      balancing, CloudWatch logs, IAM roles, vulnerability scanning, rollback planning, deployment validation, and
+      operational runbooks.
+    </p>
 
-        <h2>Implementation Approach</h2>
+    <p>
+      The goal of the project was to improve deployment consistency and reduce environment drift by packaging applications
+      into repeatable container images. Instead of depending on each server or environment having the same packages,
+      libraries, runtime versions, and configuration, the application could be built once, tagged, pushed to a registry, and
+      deployed through a controlled release workflow. This created a stronger foundation for safer application delivery and
+      production support readiness.
+    </p>
 
-        <h3>1. Reviewed the current state</h3>
-        <p>I reviewed the existing process, access model, services, operational gaps, and areas where manual work created risk or inconsistency.</p>
+    <h2>Background</h2>
 
-        <h3>2. Mapped the technical workflow</h3>
-        <p>I documented how requests, services, automation, monitoring, and operational follow-up moved through the environment.</p>
+    <p>
+      Traditional application deployments often depend on server-specific configuration. A working deployment may rely on
+      packages installed manually, runtime versions that differ between environments, local configuration files, or
+      deployment steps that are not fully documented. Over time, this creates environment drift and makes it harder to
+      troubleshoot issues between development, test, staging, and production.
+    </p>
 
-        <h3>3. Implemented or supported the changes</h3>
-        <p>I worked with the relevant AWS services, scripts, IAM controls, monitoring tools, and deployment workflows needed to support the project.</p>
+    <p>
+      Containers help solve this problem by packaging the application and its runtime dependencies into an image. The same
+      image can then move through the deployment lifecycle with controlled tagging, registry storage, scanning, promotion,
+      validation, and rollback. This makes the delivery process more repeatable and gives operations teams a clearer way to
+      understand what version of an application is running.
+    </p>
 
-        <h3>4. Validated the result</h3>
-        <p>I reviewed service behavior, logs, configuration state, security findings, access behavior, and operational output to confirm the work was successful.</p>
+    <p>
+      This project focused on the operational side of container delivery. Building a container image is only one part of the
+      workflow. The application also needs image tagging standards, registry access controls, deployment stages, secure
+      configuration handling, runtime permissions, logs, monitoring, health checks, vulnerability review, rollback planning,
+      and a runbook for investigating failed deployments.
+    </p>
 
-        <h3>5. Documented the outcome</h3>
-        <p>I captured the architecture, implementation flow, operational value, and follow-up considerations so the work could be reviewed and reused.</p>
+    <h2>Business Problem</h2>
 
-        <h2>Outcome</h2>
-        <p>The work improved understanding of containerized delivery and created a clearer path toward Kubernetes and EKS-focused platform engineering.</p>
+    <p>
+      The business problem was inconsistent application delivery and operational uncertainty across environments. When
+      application releases are performed manually or depend on server-specific configuration, the same code can behave
+      differently depending on where it is deployed. This increases troubleshooting time and makes release outcomes harder
+      to predict.
+    </p>
 
-        <p class="blog-back-link">
-          <a href="../index.html#projects">? Back to Projects</a>
-        </p>
-      </article>
-    </main>
+    <p>
+      Another challenge was release traceability. Without a clear image tag, registry record, deployment history, and
+      validation process, it becomes difficult to know which application version is running, which build introduced a
+      problem, whether a release was deployed successfully, and how to return to a previous version if needed.
+    </p>
+
+    <p>
+      The platform need was to create a safer and more repeatable delivery workflow. Application code needed to move from
+      source control to image build, image scan, private registry storage, deployment, validation, monitoring, and rollback
+      through a controlled process. This helped improve deployment consistency, reduce environment drift, strengthen image
+      management, and make production support more predictable.
+    </p>
+
+    <h2>Architecture</h2>
+
+    <p>
+      The architecture used source control as the starting point for application delivery. Application code, Dockerfiles,
+      build configuration, deployment manifests, and pipeline definitions were stored in a Git-based repository. A CI/CD
+      pipeline handled the build process by checking out the code, building the Docker image, applying a versioned image
+      tag, running validation steps, and pushing the approved image to a private registry such as Amazon ECR.
+    </p>
+
+    
+
+    <p>
+      Amazon ECR provided the private image repository. Images were tagged by version, build number, commit reference, or
+      release identifier so deployments could be traced back to a specific build. Image scanning and registry policies
+      supported stronger image management by helping identify vulnerabilities, control access, and maintain a cleaner image
+      lifecycle.
+    </p>
+
+    <p>
+      The runtime layer could use Amazon ECS, AWS Fargate, or Amazon EKS depending on the application pattern. ECS or
+      Fargate provided a managed container service model using task definitions, services, clusters, IAM task roles,
+      CloudWatch logs, and load balancer integration. EKS provided a Kubernetes-based model using pods, deployments,
+      services, ingress or load balancing, namespaces, service accounts, and cluster-level operations. In either model, the
+      container image was pulled from the private registry and deployed into a controlled runtime environment.
+    </p>
+
+    <p>
+      The access layer used a load balancer to route traffic to healthy containers. Health checks helped determine whether a
+      container was ready to receive traffic. CloudWatch logs and metrics supported operational visibility into container
+      output, service health, deployment events, scaling behavior, and application issues. Environment variables, Parameter
+      Store, Secrets Manager, and runtime configuration were used to separate application settings from the image itself.
+    </p>
+
+    <h2>What I Did</h2>
+
+    <p>
+      I supported the container delivery model by documenting and organizing the workflow from source control to image build,
+      private registry storage, deployment, validation, monitoring, and rollback. The work included Dockerfile structure,
+      image tagging, CI/CD build stages, registry publishing, secrets and configuration handling, runtime permissions,
+      container logs, deployment validation, vulnerability scanning, and operational troubleshooting.
+    </p>
+
+    <p>
+      I also focused on making the delivery process supportable after deployment. A containerized application needs clear
+      answers to operational questions: which image is running, where it was built, which tag was deployed, what environment
+      variables were used, where secrets are stored, which IAM role the task or pod uses, how logs are collected, how health
+      checks work, and how to roll back if the release fails.
+    </p>
+
+    <p>
+      The work helped connect DevOps delivery practices with cloud operations. The pipeline created repeatability, while
+      the runtime configuration, monitoring, and runbook process made the application easier to support in a production
+      environment.
+    </p>
+
+    <h2>Implementation Details</h2>
+
+    <h3>1. Dockerfile and image build process</h3>
+    <p>
+      The Dockerfile defined how the application image was built. It included the base image, runtime dependencies,
+      application files, exposed ports, working directory, startup command, and any build-time configuration required for
+      the application. A clear Dockerfile helped make the application package repeatable and reduced dependency drift
+      between environments.
+    </p>
+
+    <h3>2. Image tagging and version control</h3>
+    <p>
+      Image tagging was a key part of release traceability. Instead of relying only on a generic latest tag, the delivery
+      process used versioned tags tied to a build, release, commit, or pipeline run. This made it easier to identify what
+      was deployed and supported safer rollback because a previous known-good image could be selected when needed.
+    </p>
+
+    <h3>3. Private container registry</h3>
+    <p>
+      A private container registry such as Amazon ECR stored approved application images. The registry acted as the
+      controlled handoff point between the build pipeline and the runtime environment. Registry access was protected through
+      IAM permissions, and images could be scanned, tagged, retained, or cleaned up according to the operational lifecycle.
+    </p>
+
+    <h3>4. CI/CD build and release stages</h3>
+    <p>
+      The CI/CD pipeline provided the delivery workflow. A typical process included source checkout, dependency installation
+      where needed, Docker build, test or validation checks, image tagging, registry login, image push, deployment update,
+      and post-deployment validation. Separating build and release stages helped make the delivery process easier to review
+      and safer to operate.
+    </p>
+
+    <h3>5. Environment configuration</h3>
+    <p>
+      Runtime configuration was separated from the container image. Environment variables were used for non-sensitive
+      application settings such as runtime mode, service endpoints, feature flags, or table names. Sensitive values were
+      handled through approved secret stores such as Systems Manager Parameter Store or Secrets Manager. This reduced the
+      risk of hardcoded secrets and allowed the same image to be deployed across environments with different configuration.
+    </p>
+
+    <h3>6. Secrets handling</h3>
+    <p>
+      Secrets handling required a controlled approach. Database passwords, API tokens, SMTP credentials, and other sensitive
+      values were not stored inside the Docker image or committed to source control. Instead, they were retrieved at runtime
+      through IAM-controlled access to Parameter Store, Secrets Manager, or an approved platform-specific secret mechanism.
+      This improved security and made credential rotation easier to support.
+    </p>
+
+    <h3>7. ECS and Fargate runtime concepts</h3>
+    <p>
+      In an ECS or Fargate pattern, the application image was deployed using task definitions, services, clusters, and task
+      roles. Task definitions described the image, CPU and memory settings, environment variables, log configuration, port
+      mappings, health checks, and task role permissions. ECS services kept the desired number of tasks running and
+      integrated with load balancers for application traffic.
+    </p>
+
+    <h3>8. EKS runtime concepts</h3>
+    <p>
+      In an EKS pattern, the application image was deployed through Kubernetes objects such as deployments, pods, services,
+      ingress resources, config maps, secrets, and service accounts. EKS added Kubernetes flexibility but also required
+      operational awareness around cluster access, namespaces, pod health, image pull behavior, IAM integration, scaling,
+      logging, and deployment rollout status.
+    </p>
+
+    <h3>9. Load balancing and health checks</h3>
+    <p>
+      Load balancing routed user traffic to healthy containers. Health checks were used to determine whether a container
+      was ready and healthy enough to receive traffic. This was important for rolling deployments because the release should
+      not send production traffic to a container that starts successfully but fails application-level checks.
+    </p>
+
+    <h3>10. IAM roles and runtime permissions</h3>
+    <p>
+      Runtime permissions were handled through IAM roles. ECS task roles, EKS service account roles, or platform-specific
+      runtime identities granted containers access to only the AWS resources they needed. This reduced the need for static
+      credentials and supported a least-privilege model for application access to services such as S3, DynamoDB, SQS,
+      Parameter Store, Secrets Manager, or CloudWatch.
+    </p>
+
+    <h3>11. CloudWatch logs and monitoring</h3>
+    <p>
+      CloudWatch logs captured container output and application logs. Metrics and alarms supported visibility into service
+      health, task failures, container restarts, CPU and memory usage, deployment events, load balancer target health, and
+      application errors. Logging and monitoring were required so the team could troubleshoot issues after deployment
+      instead of treating the container runtime as a black box.
+    </p>
+
+    <h3>12. Vulnerability scanning</h3>
+    <p>
+      Image scanning supported stronger image management by identifying vulnerable packages, outdated base images, or
+      known security issues. Scan results helped determine whether an image could move forward, required remediation, or
+      needed base image updates. This improved the release workflow by bringing security review into the container image
+      lifecycle.
+    </p>
+
+    <h3>13. Rollback planning</h3>
+    <p>
+      Rollback planning was built into the delivery process. Because images were versioned, a previous known-good image
+      could be redeployed if a new release failed validation or caused production issues. Rollback planning included knowing
+      which image tag to restore, how to update the service or deployment, how to confirm health checks, and how to review
+      logs after the rollback.
+    </p>
+
+    <h3>14. Operational runbooks</h3>
+    <p>
+      Runbooks documented the steps for building, deploying, validating, troubleshooting, and rolling back containerized
+      applications. A strong runbook helped support teams investigate failed deployments, image pull errors, IAM permission
+      issues, unhealthy tasks or pods, missing environment variables, secret retrieval failures, load balancer health check
+      failures, and application errors.
+    </p>
+
+    <h2>Validation</h2>
+
+    <p>
+      Validation began during the build process. The pipeline needed to confirm that the Docker image built successfully,
+      the correct image tag was applied, the image was pushed to the private registry, and any required test or validation
+      steps completed before deployment. This helped catch build issues before they reached the runtime environment.
+    </p>
+
+    <p>
+      Deployment validation focused on confirming that the runtime service pulled the correct image and started healthy
+      containers. In ECS, this meant reviewing task definition revisions, service deployment status, task health, load
+      balancer target health, and CloudWatch logs. In EKS, this meant reviewing deployment rollout status, pod status,
+      service routing, ingress behavior, events, and container logs.
+    </p>
+
+    <p>
+      Configuration validation confirmed that the application received the expected environment variables and could access
+      required secrets through the approved mechanism. This step was important because many container failures are caused
+      by missing configuration, incorrect runtime values, failed secret retrieval, or IAM permissions that are too
+      restrictive or incorrectly scoped.
+    </p>
+
+    <p>
+      Security validation included reviewing image scan results, IAM role permissions, registry access, secret handling,
+      network exposure, and load balancer configuration. Operational validation included checking logs, metrics, alarms,
+      health checks, deployment events, and rollback readiness. A deployment was not considered complete until the
+      application was reachable, healthy, observable, and supportable.
+    </p>
+
+    <h2>Operational Workflow</h2>
+
+    <p>
+      The operational workflow began with a code change in source control. A developer or engineer committed application
+      code, Dockerfile updates, configuration changes, or deployment updates to the repository. The CI/CD pipeline then
+      started the build process, created the container image, applied the correct tag, ran validation checks, and pushed the
+      image to the private registry.
+    </p>
+
+    <p>
+      After the image was available in the registry, the release stage updated the target runtime environment. In an ECS
+      pattern, this could involve registering a new task definition revision and updating the service. In an EKS pattern,
+      this could involve updating a deployment image tag and allowing Kubernetes to roll out the new pods. In both cases,
+      the runtime platform pulled the image from the registry and started the new application version.
+    </p>
+
+    <p>
+      During deployment, the platform monitored rollout status, container startup, health checks, load balancer target
+      health, logs, and application behavior. If validation succeeded, the release was considered promoted. If validation
+      failed, the workflow moved into investigation or rollback. Because previous image tags were preserved, the team could
+      restore a known-good version and validate the service again.
+    </p>
+
+    <p>
+      For troubleshooting, the workflow followed the container delivery path step by step. The team reviewed pipeline logs,
+      image build output, registry push status, image tags, scan results, task or pod startup events, IAM permission errors,
+      environment variables, secret retrieval, load balancer health checks, CloudWatch logs, runtime metrics, and
+      application responses. This structured process helped isolate whether an issue came from the build, registry,
+      deployment configuration, runtime platform, permissions, networking, secrets, or application code.
+    </p>
+
+    <h2>Outcome</h2>
+
+    <p>
+      The project improved deployment consistency by using container images as the application delivery unit. Packaging the
+      application and runtime dependencies into a Docker image helped reduce environment drift and made deployments more
+      predictable across different stages of the release lifecycle.
+    </p>
+
+    <p>
+      The work also strengthened image management and release traceability. Versioned tags, private registry storage,
+      vulnerability scanning, CI/CD deployment stages, and rollback planning created a clearer release workflow. Teams could
+      better understand which image was running, where it came from, whether it passed validation, and how to restore a
+      previous version if needed.
+    </p>
+
+    <p>
+      The biggest operational value was production support readiness. By combining CI/CD pipelines, Amazon ECR, ECS or EKS
+      concepts, load balancing, IAM roles, secrets handling, CloudWatch logs, monitoring, health checks, validation, and
+      runbooks, the project created a practical container delivery model that was easier to deploy, troubleshoot, secure,
+      and operate.
+    </p>
+
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      This project demonstrates practical container DevOps and cloud application delivery experience across Docker,
+      Dockerfiles, image tagging, Amazon ECR, private registries, CI/CD pipelines, Azure DevOps or GitHub Actions, build and
+      release stages, environment variables, secrets handling, ECS or EKS concepts, load balancing, CloudWatch logs, IAM
+      roles, vulnerability scanning, rollback planning, deployment validation, and operational runbooks.
+    </p>
+
+    <p>
+      It also demonstrates platform engineering judgment. Container delivery is not only about building an image. It
+      requires understanding how source control, image lifecycle, registry access, runtime configuration, permissions,
+      networking, health checks, logging, scanning, deployment strategy, rollback, and support workflows fit together. This
+      project shows how those components can be organized into a safer and more repeatable application delivery model.
+    </p>
+
+    <p class="blog-back-link">
+      <a href="../index.html#projects">&larr; Back to Projects</a>
+    </p>
+  </article>
+</main>
 
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Rodney Edwin-King. Cloud Platform Engineering, Governance, Security, and Application Operations.</p>
@@ -80,5 +394,8 @@
     <script src="../script.js"></script>
   </body>
 </html>
+
+
+
 
 

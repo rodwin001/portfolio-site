@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: dark;
   --bg: #071016;
   --bg-soft: #0d1b24;
@@ -912,7 +912,7 @@ h3 {
 }
 
 .metric:nth-child(1)::after {
-  content: "☁";
+  content: "?";
 }
 
 .metric:nth-child(2)::after {
@@ -920,7 +920,7 @@ h3 {
 }
 
 .metric:nth-child(3)::after {
-  content: "◎";
+  content: "?";
 }
 
 .metric strong {
@@ -2254,17 +2254,17 @@ h3 {
   position: absolute !important;
   right: 28px !important;
   bottom: 28px !important;
-  width: 170px !important;
-  height: 95px !important;
+  width: 135px !important;
+  height: 76px !important;
   display: block !important;
   z-index: 20 !important;
 }
 
 .case-study summary .architecture-card-preview {
-  width: 170px !important;
-  height: 95px !important;
-  max-width: 170px !important;
-  max-height: 95px !important;
+  width: 135px !important;
+  height: 76px !important;
+  max-width: 135px !important;
+  max-height: 76px !important;
   object-fit: cover !important;
   display: block !important;
   border-radius: 12px !important;
@@ -2275,3 +2275,4 @@ h3 {
 .case-study summary .architecture-card-preview:hover {
   transform: scale(1.04) !important;
 }
+

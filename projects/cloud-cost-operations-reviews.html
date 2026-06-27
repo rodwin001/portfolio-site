@@ -21,63 +21,318 @@
     </header>
 
     <main class="blog-page">
-      <article class="blog-post">
-        <p class="eyebrow">Project Documentation</p>
-        <h1>Cloud Cost & Operations Reviews</h1>
+  <article class="blog-post">
+    <p class="eyebrow">Project Documentation</p>
 
-        <p class="blog-lead">This case study documents how I supported cloud cost and operations reviews by reviewing spend, ownership, resource usage, tagging, and follow-up items across cloud environments.</p>
-        <p class="blog-meta">Services and tools: AWS Billing, Cost Explorer, tagging, CloudWatch, AWS Config, CloudHealth-style review workflows, reporting.</p>
+    <h1>Cloud Cost &amp; Operations Reviews</h1>
 
-        <hr>
+    <p class="blog-lead">
+      This project documents a recurring cloud cost and operations review model for AWS environments. The work focused on
+      improving cost visibility, strengthening tagging discipline, identifying resource waste, reviewing account-level cost
+      drivers, and creating a repeatable process for stakeholder-facing cloud review conversations.
+    </p>
 
-        <h2>Overview</h2>
-        <p>The project connected technical operations with cost visibility so teams could better understand resource ownership, spend patterns, and optimization opportunities.</p>
+    <p class="blog-meta">
+      Services and tools: AWS Cost Explorer, AWS Budgets, Cost and Usage Reports, tagging, account-level cost review,
+      resource inventory, EC2, RDS, S3, Lambda, EBS volumes, snapshots, backups, CloudWatch metrics, stakeholder reporting,
+      and remediation tracking.
+    </p>
 
-        <h2>Problem</h2>
-        <p>Without consistent tagging, ownership, and review workflows, cost questions can become difficult to answer and unused resources can remain active.</p>
+    <hr>
 
-        <h2>Review Workflow</h2>
-        <p>The review workflow used billing visibility, account and resource metadata, tagging review, operational reports, and stakeholder follow-up to connect technical operations with cost awareness.</p>
-        <figure class="blog-diagram architecture-image">
-          <a href="../assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener">
-            <img 
-              src="../assets/images/cloud-cost-operations-reviews.png" 
-              alt="Cloud Cost and Operations Reviews architecture diagram" 
-              class="project-diagram" 
-              style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;"
-            >
-          </a>
-          <figcaption>Cloud Cost and Operations Reviews architecture showing cost visibility, billing reports, tagging, rightsizing, cleanup, alerts, and recurring operational review workflow.</figcaption>
-        </figure>
+    <figure class="blog-diagram architecture-image">
+      <a href="../assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener">
+        <img src="../assets/images/cloud-cost-operations-reviews.png" alt="Cloud Cost & Operations Reviews architecture diagram" class="project-diagram" style="display:block; width:100%; max-width:100%; height:auto; cursor: zoom-in;">
+      </a>
+      <figcaption>
+        Cloud cost and operations review workflow using Cost Explorer, Budgets, Cost and Usage Reports, tagging,
+        resource inventory, CloudWatch metrics, stakeholder reporting, and remediation tracking.
+      </figcaption>
+    </figure>
 
-        <h2>What I Did</h2>
-        <p>I reviewed cost and operational data, helped identify ownership gaps, supported reporting, reviewed unused or stale resources, and contributed to quarterly review workflows.</p>
+    <h2>Overview</h2>
 
-        <h2>Implementation Approach</h2>
+    <p>
+      This project documents a recurring cloud cost and operations review model for AWS environments. The work focused on
+      improving cost visibility, strengthening tagging discipline, identifying resource waste, reviewing account-level cost
+      drivers, and creating a repeatable process for stakeholder-facing cloud review conversations.
+    </p>
 
-        <h3>1. Reviewed the current state</h3>
-        <p>I reviewed the existing process, access model, services, operational gaps, and areas where manual work created risk or inconsistency.</p>
+    <p>
+      The project combined cost management and operational review because cloud spend is rarely just a billing issue.
+      Cost trends are often connected to resource ownership, tagging gaps, idle infrastructure, oversized services,
+      forgotten snapshots, unused storage, backup retention, workload growth, and operational decisions made over time.
+      The goal was to create a practical review process that helped technical teams and business stakeholders understand
+      where spend was coming from, what needed follow-up, and which actions could reduce waste or improve forecasting.
+    </p>
 
-        <h3>2. Mapped the technical workflow</h3>
-        <p>I documented how requests, services, automation, monitoring, and operational follow-up moved through the environment.</p>
+    <h2>Background</h2>
 
-        <h3>3. Implemented or supported the changes</h3>
-        <p>I worked with the relevant AWS services, scripts, IAM controls, monitoring tools, and deployment workflows needed to support the project.</p>
+    <p>
+      As AWS account usage grows, cost visibility becomes harder to manage if spend is only reviewed at the invoice level.
+      A single monthly bill does not show whether spend is tied to active workloads, underutilized compute, idle databases,
+      unattached storage, old snapshots, missing lifecycle policies, untagged resources, or services that no longer have a
+      clear owner. To make cost review useful, billing data needed to be connected to resource inventory and operational
+      context.
+    </p>
 
-        <h3>4. Validated the result</h3>
-        <p>I reviewed service behavior, logs, configuration state, security findings, access behavior, and operational output to confirm the work was successful.</p>
+    <p>
+      The cloud operating model also needed a repeatable way to support quarterly reviews. Stakeholders needed to understand
+      account-level trends, top service cost drivers, budget awareness, forecast direction, and specific remediation items.
+      Technical teams needed enough detail to know what to investigate, while business teams needed a clear explanation of
+      what was driving cost and what actions were being taken.
+    </p>
 
-        <h3>5. Documented the outcome</h3>
-        <p>I captured the architecture, implementation flow, operational value, and follow-up considerations so the work could be reviewed and reused.</p>
+    <p>
+      This project supported that operating model by combining AWS Cost Explorer, AWS Budgets, Cost and Usage Reports,
+      tagging, CloudWatch metrics, Trusted Advisor-style checks, resource inventory review, and remediation tracking into
+      a practical review workflow.
+    </p>
 
-        <h2>Outcome</h2>
-        <p>The work improved cost awareness, strengthened operational review processes, and helped teams make better decisions around resource usage and ownership.</p>
+    <h2>Business Problem</h2>
 
-        <p class="blog-back-link">
-          <a href="../index.html#projects">? Back to Projects</a>
-        </p>
-      </article>
-    </main>
+    <p>
+      The business problem was limited cost transparency and inconsistent ownership. Cloud resources can continue running
+      long after the original need has changed, especially when environments are created for testing, projects, migrations,
+      temporary support, or application changes. Without strong tagging and recurring review, it becomes difficult to know
+      who owns a resource, whether it is still needed, and whether the current spend is justified.
+    </p>
+
+    <p>
+      Another challenge was separating real optimization opportunities from noise. A high-cost service is not automatically
+      waste if it supports a production workload. At the same time, low-cost resources can accumulate across accounts and
+      create unnecessary spend when they are unattached, idle, duplicated, or no longer owned. The review process needed to
+      balance cost awareness with operational accuracy.
+    </p>
+
+    <p>
+      The platform need was to create a consistent review model that could identify cost drivers, validate resource usage,
+      improve tagging and ownership, support budget conversations, and track remediation without inventing unrealistic
+      savings claims or disrupting active workloads.
+    </p>
+
+    <h2>Architecture</h2>
+
+    <p>
+      The architecture used AWS billing, tagging, monitoring, and inventory data as inputs into a recurring review process.
+      AWS Cost Explorer provided a view into account-level and service-level spend. AWS Budgets supported budget awareness
+      and alerting. Cost and Usage Reports provided deeper billing data for analysis and reporting. Tags helped connect
+      resources to owners, applications, environments, cost centers, or business context.
+    </p>
+
+    
+
+    <p>
+      Operational services were also part of the review model. CloudWatch metrics helped validate whether compute resources
+      were active or underutilized. EC2 inventory helped identify running instances, stopped instances, unattached EBS
+      volumes, elastic IP addresses, AMIs, and snapshots. RDS review helped identify idle databases, storage growth, backup
+      retention, and instance sizing concerns. S3 review helped identify storage growth, lifecycle policy opportunities,
+      access patterns, and buckets that needed ownership clarification. Lambda review helped identify functions that were
+      inactive, obsolete, or missing clear ownership.
+    </p>
+
+    <p>
+      The review architecture connected cost data to operational findings. Cost Explorer and Cost and Usage Reports showed
+      where spend was occurring. Resource inventory and CloudWatch helped explain why the spend existed. Tagging connected
+      resources to owners. The quarterly review workflow turned those findings into remediation items, stakeholder reporting,
+      and follow-up validation.
+    </p>
+
+    <h2>What I Did</h2>
+
+    <p>
+      I supported cloud cost and operations reviews by analyzing cost drivers, reviewing AWS account usage, identifying
+      underutilized or idle resources, checking tagging and ownership gaps, and helping translate technical findings into
+      stakeholder-ready review material. The work included reviewing AWS Cost Explorer, AWS Budgets, cost and usage data,
+      resource inventory, EC2 usage, RDS usage, S3 storage, Lambda activity, snapshots, backups, unattached volumes, and
+      CloudWatch metrics.
+    </p>
+
+    <p>
+      I also supported the operational side of cost review. When a resource appeared idle or expensive, the next step was
+      not simply to delete it. The review needed to determine whether the resource had an owner, whether it supported an
+      active workload, whether it was required for recovery, whether it was part of a known deployment pattern, and whether
+      remediation could be completed safely. This helped avoid treating cost optimization as a blind cleanup exercise.
+    </p>
+
+    <p>
+      The work also involved preparing findings in a way that business and technical stakeholders could understand. Cost
+      data needed to be summarized by account, service, ownership, trend, and remediation category. This created better
+      forecasting conversations and helped teams understand whether spend changes were caused by workload growth, missing
+      cleanup, infrastructure changes, or known business activity.
+    </p>
+
+    <h2>Implementation Details</h2>
+
+    <h3>1. Account-level cost review</h3>
+    <p>
+      The review process began at the account level. Each account was reviewed for monthly spend, service-level cost
+      distribution, recent cost changes, and major cost drivers. This helped identify which accounts needed deeper review
+      and which services were responsible for the largest portions of spend.
+    </p>
+
+    <h3>2. Service-level cost analysis</h3>
+    <p>
+      Cost Explorer and cost reporting data were used to review major services such as EC2, RDS, S3, Lambda, data transfer,
+      CloudWatch, NAT gateways, backups, and managed services. Service-level review helped separate expected workload cost
+      from possible waste, such as idle compute, unneeded storage, or old backup artifacts.
+    </p>
+
+    <h3>3. Tagging and ownership review</h3>
+    <p>
+      Tags were used to connect cloud resources to ownership and business context. The review process looked for missing,
+      inconsistent, or unclear tags that made cost allocation difficult. Stronger tagging discipline helped improve cost
+      visibility, made reporting more useful, and reduced the amount of manual follow-up required to identify resource
+      owners.
+    </p>
+
+    <h3>4. EC2 and compute optimization review</h3>
+    <p>
+      EC2 review included checking running instances, stopped instances, instance families, utilization signals, attached
+      volumes, AMIs, elastic IP addresses, and auto scaling patterns. CloudWatch metrics supported the review by showing
+      whether a compute resource appeared underutilized or inactive. The goal was to identify candidates for rightsizing,
+      shutdown, scheduling, ownership review, or further investigation.
+    </p>
+
+    <h3>5. RDS and database cost review</h3>
+    <p>
+      RDS review focused on database instance size, storage growth, backup retention, idle databases, monitoring data, and
+      ownership. Databases often require more careful review because they may support critical applications even when usage
+      appears low. The process helped identify where database resources needed validation, resizing consideration, backup
+      review, or owner confirmation.
+    </p>
+
+    <h3>6. S3 storage and lifecycle review</h3>
+    <p>
+      S3 review focused on bucket ownership, storage growth, lifecycle policies, retention needs, access patterns, and
+      backup or archive usage. The goal was to identify buckets that needed lifecycle management, cleanup, storage class
+      review, or clearer ownership. This helped reduce waste while preserving data that was still required for application,
+      audit, or recovery purposes.
+    </p>
+
+    <h3>7. Snapshot, backup, and AMI review</h3>
+    <p>
+      Snapshot and backup review helped identify storage artifacts that might no longer be needed, while still respecting
+      recovery requirements. Old snapshots, AMIs, and backup copies needed to be evaluated carefully because they can be
+      tied to disaster recovery, rollback, compliance, or application support. The review process helped separate valid
+      recovery assets from stale or ownerless storage.
+    </p>
+
+    <h3>8. Lambda and serverless activity review</h3>
+    <p>
+      Lambda review focused on function activity, ownership, monitoring, triggers, and operational purpose. Inactive or
+      unclear functions were reviewed as potential cleanup candidates, but only after validating whether they were used for
+      scheduled jobs, event-driven workflows, operational automation, or infrequent business processes.
+    </p>
+
+    <h3>9. Budgets and alerting</h3>
+    <p>
+      AWS Budgets supported budget awareness and alerting. Budget review helped stakeholders understand whether current
+      spend was tracking as expected, whether forecasts needed attention, and whether alerts should be adjusted. This
+      helped move cost discussions from reactive invoice review to more proactive cost management.
+    </p>
+
+    <h3>10. Stakeholder reporting and remediation tracking</h3>
+    <p>
+      Findings were organized for stakeholder review. Reports summarized cost drivers, ownership gaps, resource cleanup
+      candidates, tagging issues, budget concerns, and follow-up items. Remediation tracking helped ensure that review
+      findings did not remain as static recommendations and instead moved through owner confirmation, action, validation,
+      and closure.
+    </p>
+
+    <h2>Validation</h2>
+
+    <p>
+      Validation focused on confirming that cost findings were accurate and operationally safe. A resource was not marked
+      as waste simply because it appeared underutilized. The review needed to confirm ownership, usage pattern, business
+      purpose, backup requirements, monitoring data, and dependency risk. This helped prevent accidental disruption while
+      still identifying real cleanup or optimization opportunities.
+    </p>
+
+    <p>
+      Cost validation included checking whether Cost Explorer, Cost and Usage Reports, resource inventory, and service-level
+      views told a consistent story. If a service appeared as a major cost driver, the review needed to identify the actual
+      resources behind that spend and determine whether the cost was expected, increasing, unexplained, or tied to known
+      workload changes.
+    </p>
+
+    <p>
+      Remediation validation occurred after an action was completed. If a volume was removed, an instance was stopped, a
+      database was resized, a lifecycle policy was added, or a tag was corrected, the follow-up review confirmed that the
+      change was completed and that reporting reflected the updated state. This kept the review process accountable and
+      helped maintain trust in the findings.
+    </p>
+
+    <h2>Operational Workflow</h2>
+
+    <p>
+      The operational workflow began with gathering billing and usage data. Cost Explorer, Budgets, Cost and Usage Reports,
+      account-level billing views, and service-level cost breakdowns were reviewed to identify major spend categories and
+      unusual changes. This provided the financial starting point for the review.
+    </p>
+
+    <p>
+      The next step was resource investigation. EC2, RDS, S3, Lambda, EBS, snapshots, backups, and other services were
+      reviewed to determine what resources were driving cost. CloudWatch metrics, inventory data, tags, and ownership
+      records helped explain whether the resources were active, idle, oversized, missing tags, or unclear in purpose.
+    </p>
+
+    <p>
+      After investigation, findings were grouped into review categories. Some findings related to tagging and ownership.
+      Some related to idle or unattached resources. Some related to backup retention or storage growth. Some related to
+      rightsizing and utilization. Others required business confirmation before action could be taken. Grouping findings
+      this way made stakeholder review more practical and helped avoid overwhelming teams with disconnected technical items.
+    </p>
+
+    <p>
+      The final step was remediation tracking. Findings were assigned to the appropriate owner or support path, reviewed
+      for risk, remediated where approved, and validated after completion. Recurring review helped identify repeated patterns,
+      such as missing tags, stale test resources, old snapshots, or unmanaged storage growth, which could then inform better
+      platform standards and automation.
+    </p>
+
+    <h2>Outcome</h2>
+
+    <p>
+      The project improved cost visibility by connecting billing data to resource-level operational context. Stakeholders
+      could better understand which accounts and services were driving spend, while technical teams had clearer evidence for
+      investigating cleanup, rightsizing, tagging, and ownership issues.
+    </p>
+
+    <p>
+      The work also improved operational review. Instead of treating cost optimization as a one-time cleanup task, the
+      process created a repeatable quarterly model for reviewing spend, validating resource usage, identifying waste,
+      confirming owners, and tracking remediation. This made cloud cost management more consistent and easier to discuss
+      across technical and business groups.
+    </p>
+
+    <p>
+      The biggest value was clearer ownership and better forecasting conversations. By improving tagging discipline,
+      organizing findings, and connecting cost trends to operational causes, the review process helped teams understand
+      where spend was going and what actions could reasonably improve efficiency without risking active workloads.
+    </p>
+
+    <h2>What This Demonstrates</h2>
+
+    <p>
+      This project demonstrates practical cloud cost management and AWS operations experience across Cost Explorer, AWS
+      Budgets, Cost and Usage Reports, tagging, account-level cost review, resource inventory, EC2, RDS, S3, Lambda,
+      snapshots, backups, CloudWatch metrics, stakeholder reporting, and remediation tracking.
+    </p>
+
+    <p>
+      It also demonstrates platform engineering judgment. Cost optimization is not just about finding expensive resources.
+      It requires understanding ownership, utilization, business purpose, recovery requirements, monitoring data, tagging
+      quality, and safe remediation. This project shows how cost data and operational review can be combined into a
+      repeatable process that improves visibility, reduces waste, strengthens tagging discipline, and supports better cloud
+      governance.
+    </p>
+
+    <p class="blog-back-link">
+      <a href="../index.html#projects">&larr; Back to Projects</a>
+    </p>
+  </article>
+</main>
 
     <footer class="site-footer">
       <p>&copy; <span id="year"></span> Rodney Edwin-King. Cloud Platform Engineering, Governance, Security, and Application Operations.</p>
@@ -86,6 +341,9 @@
     <script src="../script.js"></script>
   </body>
 </html>
+
+
+
 
 
 
