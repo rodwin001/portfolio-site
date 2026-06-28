@@ -104,26 +104,6 @@
     <div class="case-study-list">
       <details class="case-study" open>
         <summary>
-          <strong>Multi-Account Cloud Governance</strong>
-          <em>Control Tower, Organizations, SCPs, IAM, CloudTrail, AWS Config</em>
-          <a class="architecture-preview-link" href="assets/images/aws-multi-account-governance.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/aws-multi-account-governance.png" alt="Multi-Account Cloud Governance architecture diagram preview"></a>
-        </summary>
-        <div class="case-study-body">
-          <p>
-            Implemented and maintained governance patterns for a multi-account AWS environment using Control Tower, AWS Organizations,
-            IAM role baselines, SCPs, CloudTrail, AWS Config, Security Hub, and account separation across production,
-            pre-production, shared services, audit, security, and sandbox-style accounts.
-          </p>
-          <ul>
-            <li><strong>Scope:</strong> 30+ AWS accounts, landing-zone baselines, organizational guardrails, IAM/SCP controls, and account onboarding.</li>
-            <li><strong>Impact:</strong> improved consistency across accounts, reduced manual governance drift, and gave teams a repeatable operating model for secure cloud usage.</li>
-            <li><strong>Tools:</strong> AWS Control Tower, Organizations, IAM, SCPs, CloudTrail, AWS Config, Security Hub, CloudFormation, StackSets.</li>
-          </ul>
-            </div>
-      </details>
-
-      <details class="case-study">
-        <summary>
           <strong>Infrastructure Deployment Automation</strong>
           <em>CloudFormation StackSets, Azure DevOps, YAML, account lifecycle automation</em>
           <a class="architecture-preview-link" href="assets/images/infrastructure-deployment-automation.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/infrastructure-deployment-automation.png" alt="Infrastructure Deployment Automation architecture diagram preview"></a>
@@ -145,144 +125,72 @@
             </div>
       </details>
 
-      <details class="case-study">
+<details class="case-study">
         <summary>
-          <strong>Cloud Fleet Operations</strong>
-          <em>Systems Manager, EC2 inventory, patch visibility, Resource Explorer</em>
-          <a class="architecture-preview-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-fleet-operations.png" alt="Cloud Fleet Operations architecture diagram preview"></a>
+          <strong>Multi-Account Cloud Governance</strong>
+          <em>Control Tower, Organizations, SCPs, IAM, CloudTrail, AWS Config</em>
+          <a class="architecture-preview-link" href="assets/images/aws-multi-account-governance.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/aws-multi-account-governance.png" alt="Multi-Account Cloud Governance architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
-            Managed EC2 fleet operations through AWS Systems Manager, centralized node visibility, inventory,
-            patch scan associations, Resource Explorer views, managed execution, and operational runbook patterns
-            that reduced dependency on direct SSH/RDP access.
+            Implemented and maintained governance patterns for a multi-account AWS environment using Control Tower, AWS Organizations,
+            IAM role baselines, SCPs, CloudTrail, AWS Config, Security Hub, and account separation across production,
+            pre-production, shared services, audit, security, and sandbox-style accounts.
           </p>
           <ul>
-            <li><strong>Scope:</strong> organization-level Systems Manager visibility, patch scans every 12 hours, SSM agent update cadence, inventory, and operational troubleshooting workflows.</li>
-            <li><strong>Impact:</strong> improved fleet visibility, simplified operational workflows, and gave teams a clearer path for patch/compliance follow-up.</li>
-            <li><strong>Tools:</strong> AWS Systems Manager, State Manager, Resource Explorer, EC2, CloudFormation StackSets, CloudWatch.</li>
+            <li><strong>Scope:</strong> 30+ AWS accounts, landing-zone baselines, organizational guardrails, IAM/SCP controls, and account onboarding.</li>
+            <li><strong>Impact:</strong> improved consistency across accounts, reduced manual governance drift, and gave teams a repeatable operating model for secure cloud usage.</li>
+            <li><strong>Tools:</strong> AWS Control Tower, Organizations, IAM, SCPs, CloudTrail, AWS Config, Security Hub, CloudFormation, StackSets.</li>
           </ul>
-        
-              <a class="button project-doc-link" href="projects/cloud-fleet-operations.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
-      <details class="case-study">
+<details class="case-study">
         <summary>
-          <strong>Credential Rotation Automation</strong>
-          <em>SES SMTP rotation, IAM access keys, Lambda, DynamoDB, Secrets Manager</em>
-          <a class="architecture-preview-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/credential-rotation-automation.png" alt="Credential Rotation Automation architecture diagram preview"></a>
+          <strong>Container DevOps & Application Delivery</strong>
+          <em>Docker, ECS, EKS, CI/CD, image build, deployment operations</em>
+          <a class="architecture-preview-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/container-devops-application-delivery.png" alt="Container DevOps & Application Delivery architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
-            Built and maintained automated credential rotation for SES SMTP and IAM access key workflows. The automation used
-            scheduled Lambda execution, DynamoDB configuration tables, role assumption, target storage updates,
-            verification, rollback handling, CloudWatch alarms, and SNS notifications.
+            Built containerized application delivery patterns using Docker, container image workflows, private registry patterns, and cloud-native container services. The work connects local container builds, image tagging, registry workflows, CI/CD pipelines,
+            runtime configuration, service exposure, logs, and operational troubleshooting across ECS and EKS-style deployments.
           </p>
           <ul>
-            <li><strong>Scope:</strong> rotation across multiple storage targets including Parameter Store, Secrets Manager, SQL Server, and RDS-backed configurations.</li>
-            <li><strong>Impact:</strong> reduced long-lived credential risk, improved audit posture, and replaced manual key updates with controlled automation.</li>
-            <li><strong>Tools:</strong> Lambda, EventBridge, IAM, SES, DynamoDB, SSM, Secrets Manager, RDS, SQL Server, CloudWatch, SNS.</li>
+            <li><strong>Scope:</strong> Dockerfile builds, local container testing, image publishing, ECS service/task concepts, EKS/Kubernetes deployment concepts, load balancing, environment variables, logs, and CI/CD release flow.</li>
+            <li><strong>Impact:</strong> created a practical bridge from traditional server hosting to repeatable container deployments, supporting repeatable container deployments, operational troubleshooting, and platform-ready delivery patterns.</li>
+            <li><strong>Tools:</strong> Docker, Dockerfile, ECS, EKS, Kubernetes, ECR, ALB, Azure DevOps/Jenkins, YAML, AWS CLI, CloudWatch Logs.</li>
           </ul>
         
-              <a class="button project-doc-link" href="projects/credential-rotation-automation.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener">View diagram</a>
+              <a class="button project-doc-link" href="projects/container-devops-application-delivery.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
-      <details class="case-study">
+<details class="case-study">
         <summary>
-          <strong>Security & Compliance Monitoring</strong>
-          <em>Security Hub, AWS Config, OU findings aggregation, remediation tracking</em>
-          <a class="architecture-preview-link" href="assets/images/security-compliance-monitoring.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/security-compliance-monitoring.png" alt="Security & Compliance Monitoring architecture diagram preview"></a>
+          <strong>Serverless Application Architecture</strong>
+          <em>API Gateway, Lambda, S3, DynamoDB, CloudWatch, IAM</em>
+          <a class="architecture-preview-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/serverless-application-architecture.png" alt="Serverless Application Architecture architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
-            Delivered security visibility using Security Hub, AWS Config, CloudTrail, CloudWatch, account-to-business-unit
-            mappings, OU-level findings aggregation, CSV reporting to S3, and quarterly evidence gathering for
-            remediation and stakeholder review.
+            Designed serverless application patterns where users access a web front end through static hosting
+            and CDN-style delivery, API Gateway receives application requests, Lambda handles backend logic,
+            and managed AWS services store data, logs, and application artifacts.
           </p>
           <ul>
-            <li><strong>Scope:</strong> high/critical findings, AWS Config aggregators, Security Hub control visibility, account mapping, and reporting across account groups.</li>
-            <li><strong>Impact:</strong> made security findings easier to group, report, prioritize, and route to the right teams for remediation.</li>
-            <li><strong>Tools:</strong> Security Hub, AWS Config, Lambda, S3, CloudTrail, CloudWatch, CloudFormation StackSets.</li>
+            <li><strong>Scope:</strong> static HTML/CSS/JS front end, S3-hosted assets, API Gateway endpoints, Lambda functions, IAM execution roles, DynamoDB or S3-backed storage, CloudWatch logs, and DNS/certificate integration.</li>
+            <li><strong>Impact:</strong> reduced server management overhead, improved scalability, and created a cleaner path for event-driven application workflows without maintaining long-running web servers.</li>
+            <li><strong>Tools:</strong> API Gateway, Lambda, S3, DynamoDB, IAM, CloudWatch, Route 53, CloudFront/ACM patterns, AWS CLI, JSON, Python/JavaScript.</li>
           </ul>
         
-              <a class="button project-doc-link" href="projects/security-compliance-monitoring.html">View full documentation</a>
+              <a class="button project-doc-link" href="projects/serverless-application-architecture.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
 
-      <details class="case-study">
-        <summary>
-          <strong>Cloud Cost & Operations Reviews</strong>
-          <em>CloudHealth, Trusted Advisor, AWS Config, rightsizing, quarterly reviews</em>
-          <a class="architecture-preview-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-cost-operations-reviews.png" alt="Cloud Cost & Operations Reviews architecture diagram preview"></a>
-        </summary>
-        <div class="case-study-body">
-          <p>
-            Contributed to quarterly cloud reviews that combined AWS Config, Security Hub, Trusted Advisor, CloudHealth,
-            tagging evidence, rightsizing checks, stale resource checks, and cost-saving opportunities for business
-            and technical stakeholders.
-          </p>
-          <ul>
-            <li><strong>Scope:</strong> unused secrets over 90 days, idle RDS resources, low-utilization EC2 findings, RI/Savings Plan opportunities, and resource ownership gaps.</li>
-            <li><strong>Impact:</strong> surfaced measurable savings opportunities, including examples around idle RDS, EC2 rightsizing, and reserved capacity recommendations.</li>
-            <li><strong>Tools:</strong> CloudHealth, AWS Cost Explorer, Trusted Advisor, AWS Config, Security Hub, CloudWatch, Excel/reporting workflows.</li>
-          </ul>
-        
-              <a class="button project-doc-link" href="projects/cloud-cost-operations-reviews.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener">View diagram</a>
-            </div>
-      </details>
-
-      <details class="case-study">
-        <summary>
-          <strong>DNS & Disaster Recovery Operations</strong>
-          <em>Route 53, hosted zone backups, internal DNS, DRS, certificate validation</em>
-          <a class="architecture-preview-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/dns-disaster-recovery-operations.png" alt="DNS & Disaster Recovery Operations architecture diagram preview"></a>
-        </summary>
-        <div class="case-study-body">
-          <p>
-            Managed DNS and resilience operations using Route 53 hosted zones, private hosted zones, internal DNS
-            patterns, DNS backup automation, disaster recovery planning, certificate validation workflows, and
-            failover-ready operating documentation.
-          </p>
-          <ul>
-            <li><strong>Scope:</strong> hosted-zone backup automation, DNS guardrails, internal DNS operations, AWS DRS planning, and production DNS troubleshooting.</li>
-            <li><strong>Impact:</strong> improved recoverability, reduced DNS change risk, and enabled safer production and DR operations.</li>
-            <li><strong>Tools:</strong> Route 53, S3, Lambda/Python, AWS DRS, ACM/DNS validation, CloudWatch, IAM/SCP guardrails.</li>
-          </ul>
-        
-              <a class="button project-doc-link" href="projects/dns-disaster-recovery-operations.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener">View diagram</a>
-            </div>
-      </details>
-
-      <details class="case-study">
-        <summary>
-          <strong>Cloud Email Migration & Operations</strong>
-          <em>WorkMail, SES, Route 53, Zoho migration planning, SPF/DKIM/DMARC</em>
-          <a class="architecture-preview-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-email-migration-operations.png" alt="Cloud Email Migration & Operations architecture diagram preview"></a>
-        </summary>
-        <div class="case-study-body">
-          <p>
-            Managed cloud email operations and migration planning across Amazon WorkMail, SES, Route 53, identity
-            integration, shared mailboxes, inbound/outbound mail flow, DNS records, and migration planning toward
-            Zoho Mail with coexistence and rollback considerations.
-          </p>
-          <ul>
-            <li><strong>Scope:</strong> WorkMail administration, SES inbound routing, Route 53 MX/SPF/DKIM/DMARC, AD/SSO planning, mailbox mapping, and test mail-flow validation.</li>
-            <li><strong>Impact:</strong> improved migration readiness, clarified mail-flow design, and validated email delivery paths before production cutover.</li>
-            <li><strong>Tools:</strong> Amazon WorkMail, SES, Route 53, S3, Zoho Mail, AD Connector, DNS, SPF, DKIM, DMARC.</li>
-          </ul>
-        
-              <a class="button project-doc-link" href="projects/cloud-email-migration-operations.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener">View diagram</a>
-            </div>
-      </details>
-
-      <details class="case-study">
+<details class="case-study">
         <summary>
           <strong>Cloud Web Hosting & LAMP Stack Operations</strong>
           <em>EC2, Apache, MySQL, PHP, WordPress, Route 53, TLS</em>
@@ -306,48 +214,140 @@
             </div>
       </details>
 
-      <details class="case-study">
+<details class="case-study">
         <summary>
-          <strong>Serverless Application Architecture</strong>
-          <em>API Gateway, Lambda, S3, DynamoDB, CloudWatch, IAM</em>
-          <a class="architecture-preview-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/serverless-application-architecture.png" alt="Serverless Application Architecture architecture diagram preview"></a>
+          <strong>Security & Compliance Monitoring</strong>
+          <em>Security Hub, AWS Config, OU findings aggregation, remediation tracking</em>
+          <a class="architecture-preview-link" href="assets/images/security-compliance-monitoring.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/security-compliance-monitoring.png" alt="Security & Compliance Monitoring architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
-            Designed serverless application patterns where users access a web front end through static hosting
-            and CDN-style delivery, API Gateway receives application requests, Lambda handles backend logic,
-            and managed AWS services store data, logs, and application artifacts.
+            Delivered security visibility using Security Hub, AWS Config, CloudTrail, CloudWatch, account-to-business-unit
+            mappings, OU-level findings aggregation, CSV reporting to S3, and quarterly evidence gathering for
+            remediation and stakeholder review.
           </p>
           <ul>
-            <li><strong>Scope:</strong> static HTML/CSS/JS front end, S3-hosted assets, API Gateway endpoints, Lambda functions, IAM execution roles, DynamoDB or S3-backed storage, CloudWatch logs, and DNS/certificate integration.</li>
-            <li><strong>Impact:</strong> reduced server management overhead, improved scalability, and created a cleaner path for event-driven application workflows without maintaining long-running web servers.</li>
-            <li><strong>Tools:</strong> API Gateway, Lambda, S3, DynamoDB, IAM, CloudWatch, Route 53, CloudFront/ACM patterns, AWS CLI, JSON, Python/JavaScript.</li>
+            <li><strong>Scope:</strong> high/critical findings, AWS Config aggregators, Security Hub control visibility, account mapping, and reporting across account groups.</li>
+            <li><strong>Impact:</strong> made security findings easier to group, report, prioritize, and route to the right teams for remediation.</li>
+            <li><strong>Tools:</strong> Security Hub, AWS Config, Lambda, S3, CloudTrail, CloudWatch, CloudFormation StackSets.</li>
           </ul>
         
-              <a class="button project-doc-link" href="projects/serverless-application-architecture.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/serverless-application-architecture.png" target="_blank" rel="noopener">View diagram</a>
+              <a class="button project-doc-link" href="projects/security-compliance-monitoring.html">View full documentation</a>
             </div>
       </details>
 
-      <details class="case-study">
+<details class="case-study">
         <summary>
-          <strong>Container DevOps & Application Delivery</strong>
-          <em>Docker, ECS, EKS, CI/CD, image build, deployment operations</em>
-          <a class="architecture-preview-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/container-devops-application-delivery.png" alt="Container DevOps & Application Delivery architecture diagram preview"></a>
+          <strong>Cloud Fleet Operations</strong>
+          <em>Systems Manager, EC2 inventory, patch visibility, Resource Explorer</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-fleet-operations.png" alt="Cloud Fleet Operations architecture diagram preview"></a>
         </summary>
         <div class="case-study-body">
           <p>
-            Built containerized application delivery patterns using Docker, container image workflows, private registry patterns, and cloud-native container services. The work connects local container builds, image tagging, registry workflows, CI/CD pipelines,
-            runtime configuration, service exposure, logs, and operational troubleshooting across ECS and EKS-style deployments.
+            Managed EC2 fleet operations through AWS Systems Manager, centralized node visibility, inventory,
+            patch scan associations, Resource Explorer views, managed execution, and operational runbook patterns
+            that reduced dependency on direct SSH/RDP access.
           </p>
           <ul>
-            <li><strong>Scope:</strong> Dockerfile builds, local container testing, image publishing, ECS service/task concepts, EKS/Kubernetes deployment concepts, load balancing, environment variables, logs, and CI/CD release flow.</li>
-            <li><strong>Impact:</strong> created a practical bridge from traditional server hosting to repeatable container deployments, enabling future Kubernetes and platform engineering work.</li>
-            <li><strong>Tools:</strong> Docker, Dockerfile, ECS, EKS, Kubernetes, ECR, ALB, Azure DevOps/Jenkins, YAML, AWS CLI, CloudWatch Logs.</li>
+            <li><strong>Scope:</strong> organization-level Systems Manager visibility, patch scans every 12 hours, SSM agent update cadence, inventory, and operational troubleshooting workflows.</li>
+            <li><strong>Impact:</strong> improved fleet visibility, simplified operational workflows, and gave teams a clearer path for patch/compliance follow-up.</li>
+            <li><strong>Tools:</strong> AWS Systems Manager, State Manager, Resource Explorer, EC2, CloudFormation StackSets, CloudWatch.</li>
           </ul>
         
-              <a class="button project-doc-link" href="projects/container-devops-application-delivery.html">View full documentation</a>
-              <a class="button diagram-link" href="assets/images/container-devops-application-delivery.png" target="_blank" rel="noopener">View diagram</a>
+              <a class="button project-doc-link" href="projects/cloud-fleet-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-fleet-operations.png" target="_blank" rel="noopener">View diagram</a>
+            </div>
+      </details>
+
+<details class="case-study">
+        <summary>
+          <strong>Credential Rotation Automation</strong>
+          <em>SES SMTP rotation, IAM access keys, Lambda, DynamoDB, Secrets Manager</em>
+          <a class="architecture-preview-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/credential-rotation-automation.png" alt="Credential Rotation Automation architecture diagram preview"></a>
+        </summary>
+        <div class="case-study-body">
+          <p>
+            Built and maintained automated credential rotation for SES SMTP and IAM access key workflows. The automation used
+            scheduled Lambda execution, DynamoDB configuration tables, role assumption, target storage updates,
+            verification, rollback handling, CloudWatch alarms, and SNS notifications.
+          </p>
+          <ul>
+            <li><strong>Scope:</strong> rotation across multiple storage targets including Parameter Store, Secrets Manager, SQL Server, and RDS-backed configurations.</li>
+            <li><strong>Impact:</strong> reduced long-lived credential risk, improved audit posture, and replaced manual key updates with controlled automation.</li>
+            <li><strong>Tools:</strong> Lambda, EventBridge, IAM, SES, DynamoDB, SSM, Secrets Manager, RDS, SQL Server, CloudWatch, SNS.</li>
+          </ul>
+        
+              <a class="button project-doc-link" href="projects/credential-rotation-automation.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/credential-rotation-automation.png" target="_blank" rel="noopener">View diagram</a>
+            </div>
+      </details>
+
+<details class="case-study">
+        <summary>
+          <strong>DNS & Disaster Recovery Operations</strong>
+          <em>Route 53, hosted zone backups, internal DNS, DRS, certificate validation</em>
+          <a class="architecture-preview-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/dns-disaster-recovery-operations.png" alt="DNS & Disaster Recovery Operations architecture diagram preview"></a>
+        </summary>
+        <div class="case-study-body">
+          <p>
+            Managed DNS and resilience operations using Route 53 hosted zones, private hosted zones, internal DNS
+            patterns, DNS backup automation, disaster recovery planning, certificate validation workflows, and
+            failover-ready operating documentation.
+          </p>
+          <ul>
+            <li><strong>Scope:</strong> hosted-zone backup automation, DNS guardrails, internal DNS operations, AWS DRS planning, and production DNS troubleshooting.</li>
+            <li><strong>Impact:</strong> improved recoverability, reduced DNS change risk, and enabled safer production and DR operations.</li>
+            <li><strong>Tools:</strong> Route 53, S3, Lambda/Python, AWS DRS, ACM/DNS validation, CloudWatch, IAM/SCP guardrails.</li>
+          </ul>
+        
+              <a class="button project-doc-link" href="projects/dns-disaster-recovery-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/dns-disaster-recovery-operations.png" target="_blank" rel="noopener">View diagram</a>
+            </div>
+      </details>
+
+<details class="case-study">
+        <summary>
+          <strong>Cloud Cost & Operations Reviews</strong>
+          <em>CloudHealth, Trusted Advisor, AWS Config, rightsizing, quarterly reviews</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-cost-operations-reviews.png" alt="Cloud Cost & Operations Reviews architecture diagram preview"></a>
+        </summary>
+        <div class="case-study-body">
+          <p>
+            Contributed to quarterly cloud reviews that combined AWS Config, Security Hub, Trusted Advisor, CloudHealth,
+            tagging evidence, rightsizing checks, stale resource checks, and cost-saving opportunities for business
+            and technical stakeholders.
+          </p>
+          <ul>
+            <li><strong>Scope:</strong> unused secrets over 90 days, idle RDS resources, low-utilization EC2 findings, RI/Savings Plan opportunities, and resource ownership gaps.</li>
+            <li><strong>Impact:</strong> surfaced measurable savings opportunities, including examples around idle RDS, EC2 rightsizing, and reserved capacity recommendations.</li>
+            <li><strong>Tools:</strong> CloudHealth, AWS Cost Explorer, Trusted Advisor, AWS Config, Security Hub, CloudWatch, Excel/reporting workflows.</li>
+          </ul>
+        
+              <a class="button project-doc-link" href="projects/cloud-cost-operations-reviews.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-cost-operations-reviews.png" target="_blank" rel="noopener">View diagram</a>
+            </div>
+      </details>
+
+<details class="case-study">
+        <summary>
+          <strong>Cloud Email Migration & Operations</strong>
+          <em>WorkMail, SES, Route 53, Zoho migration planning, SPF/DKIM/DMARC</em>
+          <a class="architecture-preview-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();"><img class="architecture-card-preview" src="assets/images/cloud-email-migration-operations.png" alt="Cloud Email Migration & Operations architecture diagram preview"></a>
+        </summary>
+        <div class="case-study-body">
+          <p>
+            Managed cloud email operations and migration planning across Amazon WorkMail, SES, Route 53, identity
+            integration, shared mailboxes, inbound/outbound mail flow, DNS records, and migration planning toward
+            Zoho Mail with coexistence and rollback considerations.
+          </p>
+          <ul>
+            <li><strong>Scope:</strong> WorkMail administration, SES inbound routing, Route 53 MX/SPF/DKIM/DMARC, AD/SSO planning, mailbox mapping, and test mail-flow validation.</li>
+            <li><strong>Impact:</strong> improved migration readiness, clarified mail-flow design, and validated email delivery paths before production cutover.</li>
+            <li><strong>Tools:</strong> Amazon WorkMail, SES, Route 53, S3, Zoho Mail, AD Connector, DNS, SPF, DKIM, DMARC.</li>
+          </ul>
+        
+              <a class="button project-doc-link" href="projects/cloud-email-migration-operations.html">View full documentation</a>
+              <a class="button diagram-link" href="assets/images/cloud-email-migration-operations.png" target="_blank" rel="noopener">View diagram</a>
             </div>
       </details>
     </div>
@@ -511,6 +511,8 @@
 
   </body>
 </html>
+
+
 
 
 
