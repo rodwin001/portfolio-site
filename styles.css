@@ -2276,3 +2276,9 @@ h3 {
   transform: scale(1.04) !important;
 }
 
+
+/* Remove unsupported decorative icons from operating scope cards */
+.metric::after {
+  content: none !important;
+  display: none !important;
+}
